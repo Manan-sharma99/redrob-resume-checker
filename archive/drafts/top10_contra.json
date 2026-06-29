@@ -1,0 +1,617 @@
+[
+  {
+    "rank": 1,
+    "candidate_id": "CAND_0039754",
+    "current_title": "Senior Applied Scientist",
+    "current_company": "Meta",
+    "claimed_yoe": 16.2,
+    "computed_yoe": 8.2,
+    "jobs": [
+      {
+        "company": "Meta",
+        "title": "Senior Applied Scientist",
+        "start_date": "2023-05-13",
+        "end_date": null,
+        "duration_months": 37,
+        "is_current": true,
+        "industry": "Internet",
+        "company_size": "10001+",
+        "description": "Owned the end-to-end ranking pipeline at a recommendations-heavy consumer product: candidate sourcing → embedding generation (using a fine-tuned BGE-large) → Pinecone retrieval → learning-to-rank re-scoring (XGBoost) → behavioral-signal integration. The hardest part wasn't the ML — it was the evaluation: building offline metrics that actually predicted what the recommendation would do to live engagement. After three iterations we landed on a calibration approach using simulated A/B tests that has held up over the last 18 months."
+      },
+      {
+        "company": "Apple",
+        "title": "Senior ML Engineer — Search & Ranking",
+        "start_date": "2020-01-29",
+        "end_date": "2023-05-13",
+        "duration_months": 40,
+        "is_current": false,
+        "industry": "Consumer Electronics",
+        "company_size": "10001+",
+        "description": "Owned the design and rollout of a large-scale semantic search system serving an internal corpus of 35M+ items. Migrated the existing BM25-only retrieval to a hybrid setup combining sparse and dense vectors (sentence-transformers, MPNet-base initially, later fine-tuned BGE-large for our domain). The new system reduced p95 retrieval latency by 60% while improving NDCG@10 by 18% on our held-out eval set. Spent substantial time on the boring-but-critical parts: incremental index refresh, embedding drift monitoring, online/offline metric correlation. Led a team of 4 engineers across the rollout."
+      },
+      {
+        "company": "Observe.AI",
+        "title": "Senior Applied Scientist",
+        "start_date": "2018-05-09",
+        "end_date": "2020-01-29",
+        "duration_months": 21,
+        "is_current": false,
+        "industry": "AI/ML",
+        "company_size": "201-500",
+        "description": "Built a RAG-based ranking pipeline serving 50M+ queries per month for an internal recruiter-facing search product. The architecture combined BM25 + dense retrieval (BGE embeddings, FAISS HNSW) with an LLM-based re-ranker on the top-50, falling back to a learning-to-rank model when latency budget was tight. Designed the offline evaluation framework from scratch — NDCG, MRR, recall@K calibrated against online A/B engagement metrics. Drove the migration over 4 months including the recruiter-feedback loop that surfaced reranking edge cases."
+      }
+    ],
+    "education": [
+      {
+        "institution": "IIT Hyderabad",
+        "degree": "M.Sc",
+        "field_of_study": "Data Science",
+        "start_year": 2017,
+        "end_year": 2020,
+        "grade": "8.54 CGPA",
+        "tier": "tier_1"
+      }
+    ],
+    "retrieval_score": 70.0,
+    "recommendation_score": 17.0,
+    "evaluation_score": 74.0,
+    "contradiction_score": 45.0,
+    "combined_relevance": 161.0,
+    "rejection_reasons": [
+      "Experience mismatch: claimed 16.2 yrs vs computed 8.2 yrs (delta 8.0 yrs = 96 months)"
+    ]
+  },
+  {
+    "rank": 2,
+    "candidate_id": "CAND_0055992",
+    "current_title": "AI Engineer",
+    "current_company": "CRED",
+    "claimed_yoe": 16.9,
+    "computed_yoe": 6.7,
+    "jobs": [
+      {
+        "company": "CRED",
+        "title": "AI Engineer",
+        "start_date": "2025-02-01",
+        "end_date": null,
+        "duration_months": 16,
+        "is_current": true,
+        "industry": "Fintech",
+        "company_size": "1001-5000",
+        "description": "Implemented a RAG-based customer support chatbot integrated with our existing ticketing system. Built the document ingestion pipeline (chunking, embedding via OpenAI embeddings, storing in Pinecone) and the answer-generation layer (initially GPT-4, then a fine-tuned smaller model for cost control). Designed the evaluation framework with both automatic metrics (BLEU, ROUGE) and human-in-the-loop quality scores. Deployment cut average ticket resolution time by 31% for the supported categories."
+      },
+      {
+        "company": "Aganitha",
+        "title": "Senior Data Scientist",
+        "start_date": "2023-10-26",
+        "end_date": "2025-01-18",
+        "duration_months": 15,
+        "is_current": false,
+        "industry": "AI/ML",
+        "company_size": "51-200",
+        "description": "Developed a semantic search feature for an internal knowledge base of ~500K documents. Used sentence-transformers (all-MiniLM-L6-v2 initially, later upgraded to bge-base) with FAISS for fast nearest-neighbor retrieval. Designed the query expansion module that handles vocabulary mismatch between user queries and document terms. Reported search-relevance improvement of 35% over the prior Elasticsearch BM25 setup, validated through human relevance judgments."
+      },
+      {
+        "company": "Observe.AI",
+        "title": "AI Engineer",
+        "start_date": "2020-10-11",
+        "end_date": "2023-10-26",
+        "duration_months": 37,
+        "is_current": false,
+        "industry": "AI/ML",
+        "company_size": "201-500",
+        "description": "Built a content recommendation system serving 10M+ users that combined collaborative filtering with content-based ranking. The system uses item-item similarity (via sentence-transformer embeddings) for cold starts and a gradient-boosted model trained on engagement signals for warm users. Most of my time went into the feature pipeline (~200 features) and the A/B testing infrastructure. The launch improved 7-day retention by 6% and time spent per session by 14%."
+      },
+      {
+        "company": "Ola",
+        "title": "Machine Learning Engineer",
+        "start_date": "2019-10-17",
+        "end_date": "2020-10-11",
+        "duration_months": 12,
+        "is_current": false,
+        "industry": "Transportation",
+        "company_size": "5001-10000",
+        "description": "Owned the ranking layer for an e-commerce search product, evolving it from a hand-tuned scoring function to a learning-to-rank model over 9 months. Designed the relevance labeling pipeline (mix of click-through data and explicit human judgments), the feature pipeline, and the training/eval workflow. Most of the work was infrastructure and data quality — the modeling part was almost the easy bit. Final model improved revenue-per-search by 12%."
+      }
+    ],
+    "education": [
+      {
+        "institution": "NIT Surathkal",
+        "degree": "M.E.",
+        "field_of_study": "Computer Engineering",
+        "start_year": 2010,
+        "end_year": 2013,
+        "grade": "7.34 CGPA",
+        "tier": "tier_1"
+      },
+      {
+        "institution": "Delhi College of Engineering",
+        "degree": "B.Tech",
+        "field_of_study": "Information Technology",
+        "start_year": 2018,
+        "end_year": 2021,
+        "grade": "7.62 CGPA",
+        "tier": "tier_2"
+      }
+    ],
+    "retrieval_score": 84.0,
+    "recommendation_score": 30.0,
+    "evaluation_score": 18.0,
+    "contradiction_score": 45.0,
+    "combined_relevance": 132.0,
+    "rejection_reasons": [
+      "Experience mismatch: claimed 16.9 yrs vs computed 6.7 yrs (delta 10.2 yrs = 123 months)"
+    ]
+  },
+  {
+    "rank": 3,
+    "candidate_id": "CAND_0010770",
+    "current_title": "Recommendation Systems Engineer",
+    "current_company": "Aganitha",
+    "claimed_yoe": 15.2,
+    "computed_yoe": 7.2,
+    "jobs": [
+      {
+        "company": "Aganitha",
+        "title": "Recommendation Systems Engineer",
+        "start_date": "2022-06-17",
+        "end_date": null,
+        "duration_months": 48,
+        "is_current": true,
+        "industry": "AI/ML",
+        "company_size": "51-200",
+        "description": "Trained and shipped multiple ranking models for our product's discovery feed using XGBoost and LightGBM. Designed features across three families: content metadata, user behavior signals, and item engagement history. Owned the offline-online correlation analysis that determined which offline metrics actually predicted A/B test outcomes. Worked closely with PMs to define the optimization target (click-through vs. dwell time vs. downstream conversion) — that work was as important as the modeling itself."
+      },
+      {
+        "company": "Verloop.io",
+        "title": "AI Engineer",
+        "start_date": "2020-10-25",
+        "end_date": "2022-06-17",
+        "duration_months": 20,
+        "is_current": false,
+        "industry": "Conversational AI",
+        "company_size": "51-200",
+        "description": "Developed a semantic search feature for an internal knowledge base of ~500K documents. Used sentence-transformers (all-MiniLM-L6-v2 initially, later upgraded to bge-base) with FAISS for fast nearest-neighbor retrieval. Designed the query expansion module that handles vocabulary mismatch between user queries and document terms. Reported search-relevance improvement of 35% over the prior Elasticsearch BM25 setup, validated through human relevance judgments."
+      },
+      {
+        "company": "Observe.AI",
+        "title": "Senior Data Scientist",
+        "start_date": "2019-10-31",
+        "end_date": "2020-10-25",
+        "duration_months": 12,
+        "is_current": false,
+        "industry": "AI/ML",
+        "company_size": "201-500",
+        "description": "Owned the ranking layer for an e-commerce search product, evolving it from a hand-tuned scoring function to a learning-to-rank model over 9 months. Designed the relevance labeling pipeline (mix of click-through data and explicit human judgments), the feature pipeline, and the training/eval workflow. Most of the work was infrastructure and data quality — the modeling part was almost the easy bit. Final model improved revenue-per-search by 12%."
+      },
+      {
+        "company": "Locobuzz",
+        "title": "Applied ML Engineer",
+        "start_date": "2019-04-04",
+        "end_date": "2019-10-01",
+        "duration_months": 6,
+        "is_current": false,
+        "industry": "AI/ML",
+        "company_size": "51-200",
+        "description": "Developed a semantic search feature for an internal knowledge base of ~500K documents. Used sentence-transformers (all-MiniLM-L6-v2 initially, later upgraded to bge-base) with FAISS for fast nearest-neighbor retrieval. Designed the query expansion module that handles vocabulary mismatch between user queries and document terms. Reported search-relevance improvement of 35% over the prior Elasticsearch BM25 setup, validated through human relevance judgments."
+      }
+    ],
+    "education": [
+      {
+        "institution": "IIT Delhi",
+        "degree": "M.Tech",
+        "field_of_study": "Data Science",
+        "start_year": 2007,
+        "end_year": 2012,
+        "grade": "8.67 CGPA",
+        "tier": "tier_1"
+      }
+    ],
+    "retrieval_score": 84.0,
+    "recommendation_score": 0.0,
+    "evaluation_score": 18.0,
+    "contradiction_score": 45.0,
+    "combined_relevance": 102.0,
+    "rejection_reasons": [
+      "Experience mismatch: claimed 15.2 yrs vs computed 7.2 yrs (delta 8.0 yrs = 96 months)"
+    ]
+  },
+  {
+    "rank": 4,
+    "candidate_id": "CAND_0093331",
+    "current_title": "NLP Engineer",
+    "current_company": "Genpact AI",
+    "claimed_yoe": 16.1,
+    "computed_yoe": 7.2,
+    "jobs": [
+      {
+        "company": "Genpact AI",
+        "title": "NLP Engineer",
+        "start_date": "2022-05-18",
+        "end_date": null,
+        "duration_months": 49,
+        "is_current": true,
+        "industry": "AI Services",
+        "company_size": "10001+",
+        "description": "Built and operated production ML pipelines using MLflow for experiment tracking, Kubeflow for orchestration, and our internal feature store. My main project was a churn prediction model that's now used by the customer success team to prioritize outreach. Designed the model monitoring stack: data drift detection, prediction distribution checks, and alerting. Mentored a junior engineer through their first end-to-end ML project last year."
+      },
+      {
+        "company": "InMobi",
+        "title": "NLP Engineer",
+        "start_date": "2021-04-09",
+        "end_date": "2022-05-04",
+        "duration_months": 13,
+        "is_current": false,
+        "industry": "AdTech",
+        "company_size": "1001-5000",
+        "description": "Developed a semantic search feature for an internal knowledge base of ~500K documents. Used sentence-transformers (all-MiniLM-L6-v2 initially, later upgraded to bge-base) with FAISS for fast nearest-neighbor retrieval. Designed the query expansion module that handles vocabulary mismatch between user queries and document terms. Reported search-relevance improvement of 35% over the prior Elasticsearch BM25 setup, validated through human relevance judgments."
+      },
+      {
+        "company": "Observe.AI",
+        "title": "Recommendation Systems Engineer",
+        "start_date": "2019-04-06",
+        "end_date": "2021-03-26",
+        "duration_months": 24,
+        "is_current": false,
+        "industry": "AI/ML",
+        "company_size": "201-500",
+        "description": "Developed a semantic search feature for an internal knowledge base of ~500K documents. Used sentence-transformers (all-MiniLM-L6-v2 initially, later upgraded to bge-base) with FAISS for fast nearest-neighbor retrieval. Designed the query expansion module that handles vocabulary mismatch between user queries and document terms. Reported search-relevance improvement of 35% over the prior Elasticsearch BM25 setup, validated through human relevance judgments."
+      }
+    ],
+    "education": [
+      {
+        "institution": "Christ University",
+        "degree": "Ph.D",
+        "field_of_study": "Computer Engineering",
+        "start_year": 2009,
+        "end_year": 2013,
+        "grade": "9.37 CGPA",
+        "tier": "tier_3"
+      },
+      {
+        "institution": "Anna University",
+        "degree": "M.S.",
+        "field_of_study": "Artificial Intelligence",
+        "start_year": 2014,
+        "end_year": 2019,
+        "grade": "9.30 CGPA",
+        "tier": "tier_2"
+      }
+    ],
+    "retrieval_score": 70.0,
+    "recommendation_score": 0.0,
+    "evaluation_score": 18.0,
+    "contradiction_score": 45.0,
+    "combined_relevance": 88.0,
+    "rejection_reasons": [
+      "Experience mismatch: claimed 16.1 yrs vs computed 7.2 yrs (delta 8.9 yrs = 107 months)"
+    ]
+  },
+  {
+    "rank": 5,
+    "candidate_id": "CAND_0091534",
+    "current_title": "AI Engineer",
+    "current_company": "Flipkart",
+    "claimed_yoe": 16.6,
+    "computed_yoe": 7.1,
+    "jobs": [
+      {
+        "company": "Flipkart",
+        "title": "AI Engineer",
+        "start_date": "2022-02-17",
+        "end_date": null,
+        "duration_months": 52,
+        "is_current": true,
+        "industry": "E-commerce",
+        "company_size": "10001+",
+        "description": "Owned the ranking layer for an e-commerce search product, evolving it from a hand-tuned scoring function to a learning-to-rank model over 9 months. Designed the relevance labeling pipeline (mix of click-through data and explicit human judgments), the feature pipeline, and the training/eval workflow. Most of the work was infrastructure and data quality — the modeling part was almost the easy bit. Final model improved revenue-per-search by 12%."
+      },
+      {
+        "company": "Adobe",
+        "title": "Machine Learning Engineer",
+        "start_date": "2020-11-24",
+        "end_date": "2021-12-19",
+        "duration_months": 13,
+        "is_current": false,
+        "industry": "Software",
+        "company_size": "10001+",
+        "description": "Developed a semantic search feature for an internal knowledge base of ~500K documents. Used sentence-transformers (all-MiniLM-L6-v2 initially, later upgraded to bge-base) with FAISS for fast nearest-neighbor retrieval. Designed the query expansion module that handles vocabulary mismatch between user queries and document terms. Reported search-relevance improvement of 35% over the prior Elasticsearch BM25 setup, validated through human relevance judgments."
+      },
+      {
+        "company": "Glance",
+        "title": "NLP Engineer",
+        "start_date": "2019-03-05",
+        "end_date": "2020-10-25",
+        "duration_months": 20,
+        "is_current": false,
+        "industry": "AI/ML",
+        "company_size": "501-1000",
+        "description": "Implemented a RAG-based customer support chatbot integrated with our existing ticketing system. Built the document ingestion pipeline (chunking, embedding via OpenAI embeddings, storing in Pinecone) and the answer-generation layer (initially GPT-4, then a fine-tuned smaller model for cost control). Designed the evaluation framework with both automatic metrics (BLEU, ROUGE) and human-in-the-loop quality scores. Deployment cut average ticket resolution time by 31% for the supported categories."
+      }
+    ],
+    "education": [
+      {
+        "institution": "IIT Delhi",
+        "degree": "M.Tech",
+        "field_of_study": "Computer Engineering",
+        "start_year": 2014,
+        "end_year": 2018,
+        "grade": "6.94 CGPA",
+        "tier": "tier_1"
+      }
+    ],
+    "retrieval_score": 82.0,
+    "recommendation_score": 0.0,
+    "evaluation_score": 0.0,
+    "contradiction_score": 45.0,
+    "combined_relevance": 82.0,
+    "rejection_reasons": [
+      "Experience mismatch: claimed 16.6 yrs vs computed 7.1 yrs (delta 9.5 yrs = 114 months)"
+    ]
+  },
+  {
+    "rank": 6,
+    "candidate_id": "CAND_0095619",
+    "current_title": "NLP Engineer",
+    "current_company": "Nykaa",
+    "claimed_yoe": 15.6,
+    "computed_yoe": 4.2,
+    "jobs": [
+      {
+        "company": "Nykaa",
+        "title": "NLP Engineer",
+        "start_date": "2022-04-18",
+        "end_date": null,
+        "duration_months": 50,
+        "is_current": true,
+        "industry": "E-commerce",
+        "company_size": "1001-5000",
+        "description": "Owned the ranking layer for an e-commerce search product, evolving it from a hand-tuned scoring function to a learning-to-rank model over 9 months. Designed the relevance labeling pipeline (mix of click-through data and explicit human judgments), the feature pipeline, and the training/eval workflow. Most of the work was infrastructure and data quality — the modeling part was almost the easy bit. Final model improved revenue-per-search by 12%."
+      }
+    ],
+    "education": [
+      {
+        "institution": "NIT Warangal",
+        "degree": "M.Sc",
+        "field_of_study": "Machine Learning",
+        "start_year": 2017,
+        "end_year": 2022,
+        "grade": "76%",
+        "tier": "tier_1"
+      }
+    ],
+    "retrieval_score": 44.0,
+    "recommendation_score": 0.0,
+    "evaluation_score": 0.0,
+    "contradiction_score": 45.0,
+    "combined_relevance": 44.0,
+    "rejection_reasons": [
+      "Experience mismatch: claimed 15.6 yrs vs computed 4.2 yrs (delta 11.4 yrs = 137 months)"
+    ]
+  },
+  {
+    "rank": 7,
+    "candidate_id": "CAND_0013536",
+    "current_title": "Applied ML Engineer",
+    "current_company": "Haptik",
+    "claimed_yoe": 14.1,
+    "computed_yoe": 4.7,
+    "jobs": [
+      {
+        "company": "Haptik",
+        "title": "Applied ML Engineer",
+        "start_date": "2023-08-11",
+        "end_date": null,
+        "duration_months": 34,
+        "is_current": true,
+        "industry": "Conversational AI",
+        "company_size": "201-500",
+        "description": "Trained and shipped multiple ranking models for our product's discovery feed using XGBoost and LightGBM. Designed features across three families: content metadata, user behavior signals, and item engagement history. Owned the offline-online correlation analysis that determined which offline metrics actually predicted A/B test outcomes. Worked closely with PMs to define the optimization target (click-through vs. dwell time vs. downstream conversion) — that work was as important as the modeling itself."
+      },
+      {
+        "company": "Rephrase.ai",
+        "title": "Recommendation Systems Engineer",
+        "start_date": "2021-10-13",
+        "end_date": "2023-08-04",
+        "duration_months": 22,
+        "is_current": false,
+        "industry": "AI/ML",
+        "company_size": "11-50",
+        "description": "Trained and shipped multiple ranking models for our product's discovery feed using XGBoost and LightGBM. Designed features across three families: content metadata, user behavior signals, and item engagement history. Owned the offline-online correlation analysis that determined which offline metrics actually predicted A/B test outcomes. Worked closely with PMs to define the optimization target (click-through vs. dwell time vs. downstream conversion) — that work was as important as the modeling itself."
+      }
+    ],
+    "education": [
+      {
+        "institution": "Chandigarh University",
+        "degree": "M.Tech",
+        "field_of_study": "Artificial Intelligence",
+        "start_year": 2002,
+        "end_year": 2007,
+        "grade": "74%",
+        "tier": "tier_3"
+      }
+    ],
+    "retrieval_score": 18.0,
+    "recommendation_score": 0.0,
+    "evaluation_score": 20.0,
+    "contradiction_score": 45.0,
+    "combined_relevance": 38.0,
+    "rejection_reasons": [
+      "Experience mismatch: claimed 14.1 yrs vs computed 4.7 yrs (delta 9.4 yrs = 113 months)"
+    ]
+  },
+  {
+    "rank": 8,
+    "candidate_id": "CAND_0019480",
+    "current_title": "NLP Engineer",
+    "current_company": "Meesho",
+    "claimed_yoe": 2.8,
+    "computed_yoe": 7.2,
+    "jobs": [
+      {
+        "company": "Meesho",
+        "title": "NLP Engineer",
+        "start_date": "2024-11-03",
+        "end_date": null,
+        "duration_months": 19,
+        "is_current": true,
+        "industry": "E-commerce",
+        "company_size": "1001-5000",
+        "description": "Trained and shipped multiple ranking models for our product's discovery feed using XGBoost and LightGBM. Designed features across three families: content metadata, user behavior signals, and item engagement history. Owned the offline-online correlation analysis that determined which offline metrics actually predicted A/B test outcomes. Worked closely with PMs to define the optimization target (click-through vs. dwell time vs. downstream conversion) — that work was as important as the modeling itself."
+      },
+      {
+        "company": "InMobi",
+        "title": "Senior Data Scientist",
+        "start_date": "2022-09-15",
+        "end_date": "2024-11-03",
+        "duration_months": 26,
+        "is_current": false,
+        "industry": "AdTech",
+        "company_size": "1001-5000",
+        "description": "Implemented a RAG-based customer support chatbot integrated with our existing ticketing system. Built the document ingestion pipeline (chunking, embedding via OpenAI embeddings, storing in Pinecone) and the answer-generation layer (initially GPT-4, then a fine-tuned smaller model for cost control). Designed the evaluation framework with both automatic metrics (BLEU, ROUGE) and human-in-the-loop quality scores. Deployment cut average ticket resolution time by 31% for the supported categories."
+      },
+      {
+        "company": "Vedantu",
+        "title": "Senior Data Scientist",
+        "start_date": "2020-04-28",
+        "end_date": "2022-07-17",
+        "duration_months": 27,
+        "is_current": false,
+        "industry": "EdTech",
+        "company_size": "1001-5000",
+        "description": "Trained and shipped multiple ranking models for our product's discovery feed using XGBoost and LightGBM. Designed features across three families: content metadata, user behavior signals, and item engagement history. Owned the offline-online correlation analysis that determined which offline metrics actually predicted A/B test outcomes. Worked closely with PMs to define the optimization target (click-through vs. dwell time vs. downstream conversion) — that work was as important as the modeling itself."
+      },
+      {
+        "company": "Freshworks",
+        "title": "Search Engineer",
+        "start_date": "2019-02-03",
+        "end_date": "2020-04-28",
+        "duration_months": 15,
+        "is_current": false,
+        "industry": "SaaS",
+        "company_size": "5001-10000",
+        "description": "Trained and shipped multiple ranking models for our product's discovery feed using XGBoost and LightGBM. Designed features across three families: content metadata, user behavior signals, and item engagement history. Owned the offline-online correlation analysis that determined which offline metrics actually predicted A/B test outcomes. Worked closely with PMs to define the optimization target (click-through vs. dwell time vs. downstream conversion) — that work was as important as the modeling itself."
+      }
+    ],
+    "education": [
+      {
+        "institution": "Thapar University",
+        "degree": "B.Tech",
+        "field_of_study": "Machine Learning",
+        "start_year": 2004,
+        "end_year": 2007,
+        "grade": "8.11 CGPA",
+        "tier": "tier_2"
+      }
+    ],
+    "retrieval_score": 16.0,
+    "recommendation_score": 0.0,
+    "evaluation_score": 22.0,
+    "contradiction_score": 37.880001068115234,
+    "combined_relevance": 38.0,
+    "rejection_reasons": [
+      "Experience mismatch: claimed 2.8 yrs vs computed 7.2 yrs (delta 4.4 yrs = 52 months)"
+    ]
+  },
+  {
+    "rank": 9,
+    "candidate_id": "CAND_0090900",
+    "current_title": "Senior Data Engineer",
+    "current_company": "PolicyBazaar",
+    "claimed_yoe": 11.7,
+    "computed_yoe": 3.2,
+    "jobs": [
+      {
+        "company": "PolicyBazaar",
+        "title": "Senior Data Engineer",
+        "start_date": "2023-04-13",
+        "end_date": null,
+        "duration_months": 9,
+        "is_current": true,
+        "industry": "Insurance Tech",
+        "company_size": "5001-10000",
+        "description": "Mixed data science and analytics-engineering role at a marketing-analytics startup. Spent maybe 30% of my time on lightweight ML (clustering, classification, churn prediction in sklearn/XGBoost) and 70% on data infrastructure and dashboards. Comfortable with the modeling work but I wouldn't call myself an ML specialist. Built our experimentation framework that supports the product team's A/B tests."
+      }
+    ],
+    "education": [
+      {
+        "institution": "Local Engineering College",
+        "degree": "B.E.",
+        "field_of_study": "MBA",
+        "start_year": 2015,
+        "end_year": 2020,
+        "grade": "66%",
+        "tier": "tier_4"
+      },
+      {
+        "institution": "Chandigarh University",
+        "degree": "M.Sc",
+        "field_of_study": "Mathematics",
+        "start_year": 2013,
+        "end_year": 2017,
+        "grade": "79%",
+        "tier": "tier_3"
+      }
+    ],
+    "retrieval_score": 0.0,
+    "recommendation_score": 0.0,
+    "evaluation_score": 36.0,
+    "contradiction_score": 50.0,
+    "combined_relevance": 36.0,
+    "rejection_reasons": [
+      "Experience mismatch: claimed 11.7 yrs vs computed 3.2 yrs (delta 8.5 yrs = 102 months)",
+      "Duration mismatch on [Senior Data Engineer]: stated 9m vs computed 38m"
+    ]
+  },
+  {
+    "rank": 10,
+    "candidate_id": "CAND_0071115",
+    "current_title": "Recommendation Systems Engineer",
+    "current_company": "Meta",
+    "claimed_yoe": 16.5,
+    "computed_yoe": 5.8,
+    "jobs": [
+      {
+        "company": "Meta",
+        "title": "Recommendation Systems Engineer",
+        "start_date": "2022-09-15",
+        "end_date": null,
+        "duration_months": 45,
+        "is_current": true,
+        "industry": "Internet",
+        "company_size": "10001+",
+        "description": "Built and operated production ML pipelines using MLflow for experiment tracking, Kubeflow for orchestration, and our internal feature store. My main project was a churn prediction model that's now used by the customer success team to prioritize outreach. Designed the model monitoring stack: data drift detection, prediction distribution checks, and alerting. Mentored a junior engineer through their first end-to-end ML project last year."
+      },
+      {
+        "company": "Krutrim",
+        "title": "AI Engineer",
+        "start_date": "2020-09-25",
+        "end_date": "2022-09-15",
+        "duration_months": 24,
+        "is_current": false,
+        "industry": "AI/ML",
+        "company_size": "201-500",
+        "description": "Built and operated production ML pipelines using MLflow for experiment tracking, Kubeflow for orchestration, and our internal feature store. My main project was a churn prediction model that's now used by the customer success team to prioritize outreach. Designed the model monitoring stack: data drift detection, prediction distribution checks, and alerting. Mentored a junior engineer through their first end-to-end ML project last year."
+      }
+    ],
+    "education": [
+      {
+        "institution": "IIT Madras",
+        "degree": "B.Tech",
+        "field_of_study": "Information Technology",
+        "start_year": 2003,
+        "end_year": 2007,
+        "grade": "69%",
+        "tier": "tier_1"
+      }
+    ],
+    "retrieval_score": 4.0,
+    "recommendation_score": 0.0,
+    "evaluation_score": 20.0,
+    "contradiction_score": 45.0,
+    "combined_relevance": 24.0,
+    "rejection_reasons": [
+      "Experience mismatch: claimed 16.5 yrs vs computed 5.8 yrs (delta 10.8 yrs = 129 months)"
+    ]
+  }
+]

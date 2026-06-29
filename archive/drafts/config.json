@@ -1,0 +1,17 @@
+{
+    "protected_elite": {
+        "relevance_percentile": 95,
+        "production_percentile": 90,
+        "max_contradiction": 20,
+        "allow_consulting_only": false
+    },
+    "score_resolution": {
+        "epsilon": 1e-5
+    },
+    "duplicate_detection": {
+        "similarity_threshold": 0.90
+    },
+    "sensitivity": {
+        "perturbations": [0.05, -0.05, 0.10, -0.10]
+    }
+}

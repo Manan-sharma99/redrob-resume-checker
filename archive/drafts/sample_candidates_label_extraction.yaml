@@ -1,0 +1,3034 @@
+dataset_summary:
+  total_candidates: 50
+  most_common_archetypes:
+    - Consulting ML Engineer: 14
+    - Other: 13
+    - Software Engineer: 4
+    - Recommendation Engineer: 4
+    - Search Engineer: 4
+    - Product Engineer: 4
+    - Marketing + AI: 3
+    - Finance + AI: 3
+    - MLOps Engineer: 1
+  most_common_hidden_tiers:
+    - Tier 2: 16
+    - Tier 1: 16
+    - Tier 4: 9
+    - Tier 3: 8
+    - Tier 0: 1
+  most_common_consistency_scores:
+    - score_2: 7
+    - score_3: 12
+    - score_4: 3
+    - score_5: 28
+  most_common_honeypot_risks:
+    - High: 21
+    - None: 16
+    - Extreme: 12
+    - Low: 1
+  common_patterns:
+    - Direct search/retrieval/recommendation evidence usually comes from explicit terms plus FAISS/Pinecone/Milvus/Weaviate-style tooling.
+    - Production strength is driven by pipelines, streaming, deployment, monitoring, CI/CD, and ownership of user-facing or real-time systems.
+    - The biggest red flags are boilerplate summaries, repeated cross-domain job descriptions, and titles that do not match the described work.
+    - Generic AI buzzwords and side projects are much less predictive than career-history evidence.
+candidates:
+  - candidate_id: CAND_0000001
+    title: "Backend Engineer"
+    years_experience_estimated: 6.9
+    one_sentence_profile_summary: "Software / data professional with 6.9 years of experience building data pipelines, backend systems, and analytics infrastructure."
+    archetype: "Software Engineer"
+    reason: |
+      General software engineering is the main recurring theme, with limited domain specialization.
+    retrieval_score: 1
+    retrieval_evidence: |
+      milvus
+    production_score: 5
+    production_evidence: |
+      pipelines; streaming; kafka; airflow; real-time
+    product_vs_consulting: "Product-heavy"
+    consistency_score: 5
+    consistency_reason: |
+      Title, summary, and job history are broadly aligned.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: YES
+        evidence: "Milvus mentioned in skills or experience."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: YES
+        evidence: "mentions vector DB / vector search tooling"
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "High"
+    behavioral_reason: |
+      last_active_days_ago=35; recruiter_response_rate=0.34; interview_completion_rate=0.71; saved_by_recruiters_30d=4; github_activity_score=9.2
+    honeypot_risk: "None"
+    honeypot_reason: |
+      No strong honeypot indicators beyond normal synthetic-profile noise.
+    predicted_hidden_tier: "Tier 3"
+    tier_reason: |
+      General engineering profile with some AI-adjacent indicators.
+  - candidate_id: CAND_0000002
+    title: "Operations Manager"
+    years_experience_estimated: 12.5
+    one_sentence_profile_summary: "Professional with 12.5+ years of experience."
+    archetype: "Consulting ML Engineer"
+    reason: |
+      Business or consulting title plus some AI or data signals make it adjacent rather than core.
+    retrieval_score: 2
+    retrieval_evidence: |
+      search
+    production_score: 2
+    production_evidence: |
+      production; kafka
+    product_vs_consulting: "Mixed"
+    consistency_score: 3
+    consistency_reason: |
+      2 contradiction signal(s) detected from title/work-history/education mix. Work-history descriptions are heavily reused across unrelated titles.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "Medium"
+    behavioral_reason: |
+      last_active_days_ago=224; recruiter_response_rate=0.29; interview_completion_rate=0.62; saved_by_recruiters_30d=10; github_activity_score=-1
+    honeypot_risk: "Extreme"
+    honeypot_reason: |
+      some mismatches; template reuse; career-history mismatch
+    predicted_hidden_tier: "Tier 2"
+    tier_reason: |
+      Mostly adjacent business/consulting work with AI buzzwords rather than core retrieval/ranking depth.
+  - candidate_id: CAND_0000003
+    title: "Customer Support"
+    years_experience_estimated: 1.1
+    one_sentence_profile_summary: "Professional with 1.1+ years of experience."
+    archetype: "Consulting ML Engineer"
+    reason: |
+      Business or consulting title plus some AI or data signals make it adjacent rather than core.
+    retrieval_score: 0
+    retrieval_evidence: |
+      No explicit evidence.
+    production_score: 1
+    production_evidence: |
+      kubernetes
+    product_vs_consulting: "Mixed"
+    consistency_score: 5
+    consistency_reason: |
+      Title, summary, and job history are broadly aligned.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "High"
+    behavioral_reason: |
+      last_active_days_ago=95; recruiter_response_rate=0.46; interview_completion_rate=0.86; saved_by_recruiters_30d=4; github_activity_score=-1
+    honeypot_risk: "High"
+    honeypot_reason: |
+      template reuse
+    predicted_hidden_tier: "Tier 2"
+    tier_reason: |
+      Mostly adjacent business/consulting work with AI buzzwords rather than core retrieval/ranking depth.
+  - candidate_id: CAND_0000004
+    title: "Marketing Manager"
+    years_experience_estimated: 3.8
+    one_sentence_profile_summary: "Professional with 3.8+ years of experience."
+    archetype: "Marketing + AI"
+    reason: |
+      Marketing-facing work is mixed with AI tooling or ML-adjacent keywords.
+    retrieval_score: 2
+    retrieval_evidence: |
+      search
+    production_score: 2
+    production_evidence: |
+      production; airflow
+    product_vs_consulting: "Mixed"
+    consistency_score: 3
+    consistency_reason: |
+      2 contradiction signal(s) detected from title/work-history/education mix. Work-history descriptions are heavily reused across unrelated titles.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "High"
+    behavioral_reason: |
+      last_active_days_ago=91; recruiter_response_rate=0.26; interview_completion_rate=0.35; saved_by_recruiters_30d=8; github_activity_score=-1
+    honeypot_risk: "Extreme"
+    honeypot_reason: |
+      some mismatches; template reuse; career-history mismatch
+    predicted_hidden_tier: "Tier 2"
+    tier_reason: |
+      Mostly adjacent business/consulting work with AI buzzwords rather than core retrieval/ranking depth.
+  - candidate_id: CAND_0000005
+    title: "Accountant"
+    years_experience_estimated: 11.0
+    one_sentence_profile_summary: "Professional with 11.0+ years of experience."
+    archetype: "Finance + AI"
+    reason: |
+      Finance or accounting work is mixed with AI or data keywords.
+    retrieval_score: 0
+    retrieval_evidence: |
+      No explicit evidence.
+    production_score: 0
+    production_evidence: |
+      No explicit evidence.
+    product_vs_consulting: "Mixed"
+    consistency_score: 2
+    consistency_reason: |
+      3 contradiction signal(s) detected from title/work-history/education mix. Work-history descriptions are heavily reused across unrelated titles.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "Low"
+    behavioral_reason: |
+      last_active_days_ago=266; recruiter_response_rate=0.37; interview_completion_rate=0.74; saved_by_recruiters_30d=1; github_activity_score=-1
+    honeypot_risk: "Extreme"
+    honeypot_reason: |
+      several inconsistencies; template reuse; career-history mismatch
+    predicted_hidden_tier: "Tier 1"
+    tier_reason: |
+      Mostly adjacent business/consulting work with AI buzzwords rather than core retrieval/ranking depth.
+  - candidate_id: CAND_0000006
+    title: "Business Analyst"
+    years_experience_estimated: 6.0
+    one_sentence_profile_summary: "Professional with 6.0+ years of experience."
+    archetype: "Consulting ML Engineer"
+    reason: |
+      Business or consulting title plus some AI or data signals make it adjacent rather than core.
+    retrieval_score: 0
+    retrieval_evidence: |
+      No explicit evidence.
+    production_score: 0
+    production_evidence: |
+      No explicit evidence.
+    product_vs_consulting: "Mixed"
+    consistency_score: 5
+    consistency_reason: |
+      Title, summary, and job history are broadly aligned.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "High"
+    behavioral_reason: |
+      last_active_days_ago=116; recruiter_response_rate=0.12; interview_completion_rate=0.57; saved_by_recruiters_30d=9; github_activity_score=-1
+    honeypot_risk: "High"
+    honeypot_reason: |
+      template reuse
+    predicted_hidden_tier: "Tier 2"
+    tier_reason: |
+      Mostly adjacent business/consulting work with AI buzzwords rather than core retrieval/ranking depth.
+  - candidate_id: CAND_0000007
+    title: "Civil Engineer"
+    years_experience_estimated: 5.5
+    one_sentence_profile_summary: "Professional with 5.5+ years of experience."
+    archetype: "Other"
+    reason: |
+      No strong search, retrieval, or ranking specialization dominates the profile.
+    retrieval_score: 0
+    retrieval_evidence: |
+      No explicit evidence.
+    production_score: 1
+    production_evidence: |
+      production
+    product_vs_consulting: "Mixed"
+    consistency_score: 3
+    consistency_reason: |
+      2 contradiction signal(s) detected from title/work-history/education mix.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "High"
+    behavioral_reason: |
+      last_active_days_ago=30; recruiter_response_rate=0.62; interview_completion_rate=0.47; saved_by_recruiters_30d=8; github_activity_score=-1
+    honeypot_risk: "High"
+    honeypot_reason: |
+      some mismatches; template reuse
+    predicted_hidden_tier: "Tier 1"
+    tier_reason: |
+      Mostly adjacent or generic profile for this target role.
+  - candidate_id: CAND_0000008
+    title: "Operations Manager"
+    years_experience_estimated: 3.6
+    one_sentence_profile_summary: "Professional with 3.6+ years of experience."
+    archetype: "Consulting ML Engineer"
+    reason: |
+      Business or consulting title plus some AI or data signals make it adjacent rather than core.
+    retrieval_score: 0
+    retrieval_evidence: |
+      No explicit evidence.
+    production_score: 1
+    production_evidence: |
+      kubernetes
+    product_vs_consulting: "Product-heavy"
+    consistency_score: 5
+    consistency_reason: |
+      Title, summary, and job history are broadly aligned.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "Medium"
+    behavioral_reason: |
+      last_active_days_ago=193; recruiter_response_rate=0.42; interview_completion_rate=0.74; saved_by_recruiters_30d=0; github_activity_score=-1
+    honeypot_risk: "High"
+    honeypot_reason: |
+      template reuse
+    predicted_hidden_tier: "Tier 2"
+    tier_reason: |
+      Mostly adjacent business/consulting work with AI buzzwords rather than core retrieval/ranking depth.
+  - candidate_id: CAND_0000009
+    title: "Mechanical Engineer"
+    years_experience_estimated: 11.0
+    one_sentence_profile_summary: "Professional with 11.0+ years of experience."
+    archetype: "Other"
+    reason: |
+      No strong search, retrieval, or ranking specialization dominates the profile.
+    retrieval_score: 0
+    retrieval_evidence: |
+      No explicit evidence.
+    production_score: 1
+    production_evidence: |
+      production
+    product_vs_consulting: "Mixed"
+    consistency_score: 2
+    consistency_reason: |
+      3 contradiction signal(s) detected from title/work-history/education mix.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "Medium"
+    behavioral_reason: |
+      last_active_days_ago=148; recruiter_response_rate=0.53; interview_completion_rate=0.54; saved_by_recruiters_30d=1; github_activity_score=-1
+    honeypot_risk: "High"
+    honeypot_reason: |
+      several inconsistencies; template reuse
+    predicted_hidden_tier: "Tier 0"
+    tier_reason: |
+      Synthetic mismatch signals reduce confidence sharply.
+  - candidate_id: CAND_0000010
+    title: "Data Engineer"
+    years_experience_estimated: 4.6
+    one_sentence_profile_summary: "Software / data professional with 4.6 years of experience building data pipelines, backend systems, and analytics infrastructure."
+    archetype: "Search Engineer"
+    reason: |
+      Search, retrieval, or vector-tech terms appear in the profile, suggesting search-oriented ML work.
+    retrieval_score: 2
+    retrieval_evidence: |
+      search; elasticsearch
+    production_score: 5
+    production_evidence: |
+      a/b; experimentation; pipelines; airflow
+    product_vs_consulting: "Product-heavy"
+    consistency_score: 5
+    consistency_reason: |
+      Title, summary, and job history are broadly aligned.
+    search_technologies:
+      Elasticsearch:
+        status: YES
+        evidence: "Elasticsearch mentioned in skills or experience."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 1
+    evaluation_evidence: |
+      experimentation
+    behavioral_quality: "High"
+    behavioral_reason: |
+      last_active_days_ago=56; recruiter_response_rate=0.4; interview_completion_rate=0.53; saved_by_recruiters_30d=2; github_activity_score=33.7
+    honeypot_risk: "None"
+    honeypot_reason: |
+      No strong honeypot indicators beyond normal synthetic-profile noise.
+    predicted_hidden_tier: "Tier 4"
+    tier_reason: |
+      Relevant search/retrieval/recommendation signals are present, but the profile is not fully clean or complete.
+  - candidate_id: CAND_0000011
+    title: "QA Engineer"
+    years_experience_estimated: 2.0
+    one_sentence_profile_summary: "Software engineer with 2.0 years of experience across web, backend, and cloud systems."
+    archetype: "Recommendation Engineer"
+    reason: |
+      Primary recommendation/search evidence from the title and explicit recommendation or embedding language in the profile.
+    retrieval_score: 3
+    retrieval_evidence: |
+      recommendation systems
+    production_score: 2
+    production_evidence: |
+      production; deployment; system ownership / operational work
+    product_vs_consulting: "Product-heavy"
+    consistency_score: 5
+    consistency_reason: |
+      Title, summary, and job history are broadly aligned.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "Medium"
+    behavioral_reason: |
+      last_active_days_ago=156; recruiter_response_rate=0.56; interview_completion_rate=0.45; saved_by_recruiters_30d=13; github_activity_score=32.3
+    honeypot_risk: "None"
+    honeypot_reason: |
+      No strong honeypot indicators beyond normal synthetic-profile noise.
+    predicted_hidden_tier: "Tier 4"
+    tier_reason: |
+      Relevant search/retrieval/recommendation signals are present, but the profile is not fully clean or complete.
+  - candidate_id: CAND_0000012
+    title: "Operations Manager"
+    years_experience_estimated: 1.1
+    one_sentence_profile_summary: "Professional with 1.1+ years of experience."
+    archetype: "Consulting ML Engineer"
+    reason: |
+      Business or consulting title plus some AI or data signals make it adjacent rather than core.
+    retrieval_score: 0
+    retrieval_evidence: |
+      No explicit evidence.
+    production_score: 1
+    production_evidence: |
+      airflow
+    product_vs_consulting: "Mixed"
+    consistency_score: 5
+    consistency_reason: |
+      Title, summary, and job history are broadly aligned.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "Medium"
+    behavioral_reason: |
+      last_active_days_ago=239; recruiter_response_rate=0.16; interview_completion_rate=0.42; saved_by_recruiters_30d=3; github_activity_score=-1
+    honeypot_risk: "High"
+    honeypot_reason: |
+      template reuse
+    predicted_hidden_tier: "Tier 2"
+    tier_reason: |
+      Mostly adjacent business/consulting work with AI buzzwords rather than core retrieval/ranking depth.
+  - candidate_id: CAND_0000013
+    title: "Civil Engineer"
+    years_experience_estimated: 1.1
+    one_sentence_profile_summary: "Professional with 1.1+ years of experience."
+    archetype: "Other"
+    reason: |
+      No strong search, retrieval, or ranking specialization dominates the profile.
+    retrieval_score: 0
+    retrieval_evidence: |
+      No explicit evidence.
+    production_score: 1
+    production_evidence: |
+      pipelines
+    product_vs_consulting: "Mixed"
+    consistency_score: 3
+    consistency_reason: |
+      2 contradiction signal(s) detected from title/work-history/education mix.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "High"
+    behavioral_reason: |
+      last_active_days_ago=90; recruiter_response_rate=0.28; interview_completion_rate=0.33; saved_by_recruiters_30d=12; github_activity_score=35.6
+    honeypot_risk: "High"
+    honeypot_reason: |
+      some mismatches; template reuse
+    predicted_hidden_tier: "Tier 1"
+    tier_reason: |
+      Mostly adjacent or generic profile for this target role.
+  - candidate_id: CAND_0000014
+    title: "Frontend Engineer"
+    years_experience_estimated: 8.4
+    one_sentence_profile_summary: "Software engineer with 8.4 years of experience across web, backend, and cloud systems."
+    archetype: "Search Engineer"
+    reason: |
+      Search, retrieval, or vector-tech terms appear in the profile, suggesting search-oriented ML work.
+    retrieval_score: 4
+    retrieval_evidence: |
+      search; opensearch; faiss
+    production_score: 1
+    production_evidence: |
+      production; system ownership / operational work
+    product_vs_consulting: "Product-heavy"
+    consistency_score: 5
+    consistency_reason: |
+      Title, summary, and job history are broadly aligned.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: YES
+        evidence: "OpenSearch mentioned in skills or experience."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: YES
+        evidence: "FAISS mentioned in skills or experience."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: YES
+        evidence: "mentions vector DB / vector search tooling"
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "High"
+    behavioral_reason: |
+      last_active_days_ago=73; recruiter_response_rate=0.8; interview_completion_rate=0.55; saved_by_recruiters_30d=0; github_activity_score=-1
+    honeypot_risk: "None"
+    honeypot_reason: |
+      No strong honeypot indicators beyond normal synthetic-profile noise.
+    predicted_hidden_tier: "Tier 4"
+    tier_reason: |
+      Direct search/retrieval/ranking alignment with strong production evidence.
+  - candidate_id: CAND_0000015
+    title: "Software Engineer"
+    years_experience_estimated: 5.4
+    one_sentence_profile_summary: "Software engineer with 5.4 years of experience across web, backend, and cloud systems."
+    archetype: "Software Engineer"
+    reason: |
+      General software engineering is the main recurring theme, with limited domain specialization.
+    retrieval_score: 1
+    retrieval_evidence: |
+      qdrant
+    production_score: 5
+    production_evidence: |
+      production; deployment; monitoring; pipelines; kafka
+    product_vs_consulting: "Product-heavy"
+    consistency_score: 5
+    consistency_reason: |
+      Title, summary, and job history are broadly aligned.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: YES
+        evidence: "mentions vector DB / vector search tooling"
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "Medium"
+    behavioral_reason: |
+      last_active_days_ago=132; recruiter_response_rate=0.32; interview_completion_rate=0.72; saved_by_recruiters_30d=8; github_activity_score=-1
+    honeypot_risk: "None"
+    honeypot_reason: |
+      No strong honeypot indicators beyond normal synthetic-profile noise.
+    predicted_hidden_tier: "Tier 3"
+    tier_reason: |
+      General engineering profile with some AI-adjacent indicators.
+  - candidate_id: CAND_0000016
+    title: "Accountant"
+    years_experience_estimated: 5.3
+    one_sentence_profile_summary: "Professional with 5.3+ years of experience."
+    archetype: "Finance + AI"
+    reason: |
+      Finance or accounting work is mixed with AI or data keywords.
+    retrieval_score: 0
+    retrieval_evidence: |
+      No explicit evidence.
+    production_score: 2
+    production_evidence: |
+      production; pipelines
+    product_vs_consulting: "Mixed"
+    consistency_score: 3
+    consistency_reason: |
+      2 contradiction signal(s) detected from title/work-history/education mix. Work-history descriptions are heavily reused across unrelated titles.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "Medium"
+    behavioral_reason: |
+      last_active_days_ago=185; recruiter_response_rate=0.64; interview_completion_rate=0.66; saved_by_recruiters_30d=5; github_activity_score=42.9
+    honeypot_risk: "Extreme"
+    honeypot_reason: |
+      some mismatches; template reuse; career-history mismatch
+    predicted_hidden_tier: "Tier 2"
+    tier_reason: |
+      Mostly adjacent business/consulting work with AI buzzwords rather than core retrieval/ranking depth.
+  - candidate_id: CAND_0000017
+    title: "Accountant"
+    years_experience_estimated: 12.3
+    one_sentence_profile_summary: "Professional with 12.3+ years of experience."
+    archetype: "Finance + AI"
+    reason: |
+      Finance or accounting work is mixed with AI or data keywords.
+    retrieval_score: 0
+    retrieval_evidence: |
+      No explicit evidence.
+    production_score: 1
+    production_evidence: |
+      production
+    product_vs_consulting: "Mixed"
+    consistency_score: 2
+    consistency_reason: |
+      3 contradiction signal(s) detected from title/work-history/education mix. Work-history descriptions are heavily reused across unrelated titles.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "Medium"
+    behavioral_reason: |
+      last_active_days_ago=232; recruiter_response_rate=0.27; interview_completion_rate=0.32; saved_by_recruiters_30d=2; github_activity_score=-1
+    honeypot_risk: "Extreme"
+    honeypot_reason: |
+      several inconsistencies; template reuse; career-history mismatch
+    predicted_hidden_tier: "Tier 1"
+    tier_reason: |
+      Mostly adjacent business/consulting work with AI buzzwords rather than core retrieval/ranking depth.
+  - candidate_id: CAND_0000018
+    title: "Frontend Engineer"
+    years_experience_estimated: 6.6
+    one_sentence_profile_summary: "Software engineer with 6.6 years of experience across web, backend, and cloud systems."
+    archetype: "Product Engineer"
+    reason: |
+      Frontend or full-stack product-facing engineering is the clearest repeated theme.
+    retrieval_score: 0
+    retrieval_evidence: |
+      No explicit evidence.
+    production_score: 2
+    production_evidence: |
+      production; pipelines; system ownership / operational work
+    product_vs_consulting: "Product-heavy"
+    consistency_score: 5
+    consistency_reason: |
+      Title, summary, and job history are broadly aligned.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "Medium"
+    behavioral_reason: |
+      last_active_days_ago=126; recruiter_response_rate=0.16; interview_completion_rate=0.7; saved_by_recruiters_30d=16; github_activity_score=-1
+    honeypot_risk: "None"
+    honeypot_reason: |
+      No strong honeypot indicators beyond normal synthetic-profile noise.
+    predicted_hidden_tier: "Tier 3"
+    tier_reason: |
+      General engineering profile with some AI-adjacent indicators.
+  - candidate_id: CAND_0000019
+    title: "Project Manager"
+    years_experience_estimated: 6.5
+    one_sentence_profile_summary: "Professional with 6.5+ years of experience."
+    archetype: "Other"
+    reason: |
+      No strong search, retrieval, or ranking specialization dominates the profile.
+    retrieval_score: 0
+    retrieval_evidence: |
+      No explicit evidence.
+    production_score: 1
+    production_evidence: |
+      production
+    product_vs_consulting: "Mixed"
+    consistency_score: 5
+    consistency_reason: |
+      Title, summary, and job history are broadly aligned.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "Medium"
+    behavioral_reason: |
+      last_active_days_ago=34; recruiter_response_rate=0.34; interview_completion_rate=0.31; saved_by_recruiters_30d=0; github_activity_score=-1
+    honeypot_risk: "High"
+    honeypot_reason: |
+      template reuse
+    predicted_hidden_tier: "Tier 1"
+    tier_reason: |
+      Mostly adjacent or generic profile for this target role.
+  - candidate_id: CAND_0000020
+    title: "Mechanical Engineer"
+    years_experience_estimated: 6.3
+    one_sentence_profile_summary: "Professional with 6.3+ years of experience."
+    archetype: "Other"
+    reason: |
+      No strong search, retrieval, or ranking specialization dominates the profile.
+    retrieval_score: 2
+    retrieval_evidence: |
+      search
+    production_score: 1
+    production_evidence: |
+      production
+    product_vs_consulting: "Mixed"
+    consistency_score: 3
+    consistency_reason: |
+      2 contradiction signal(s) detected from title/work-history/education mix.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "Low"
+    behavioral_reason: |
+      last_active_days_ago=262; recruiter_response_rate=0.55; interview_completion_rate=0.71; saved_by_recruiters_30d=11; github_activity_score=-1
+    honeypot_risk: "High"
+    honeypot_reason: |
+      some mismatches; template reuse
+    predicted_hidden_tier: "Tier 1"
+    tier_reason: |
+      Mostly adjacent or generic profile for this target role.
+  - candidate_id: CAND_0000021
+    title: "Project Manager"
+    years_experience_estimated: 14.5
+    one_sentence_profile_summary: "Project Manager with 14.5+ years of experience driving outcomes in my domain."
+    archetype: "Recommendation Engineer"
+    reason: |
+      Primary recommendation/search evidence from the title and explicit recommendation or embedding language in the profile.
+    retrieval_score: 5
+    retrieval_evidence: |
+      recommendation systems; search; embeddings; vector search; faiss
+    production_score: 2
+    production_evidence: |
+      production; kafka
+    product_vs_consulting: "Mixed"
+    consistency_score: 4
+    consistency_reason: |
+      1 contradiction signal(s) detected from title/work-history/education mix.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: YES
+        evidence: "Pinecone mentioned in skills or experience."
+      FAISS:
+        status: YES
+        evidence: "FAISS mentioned in skills or experience."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: YES
+        evidence: "mentions vector DB / vector search tooling"
+      Embedding Systems:
+        status: YES
+        evidence: "embedding/embeddings mentioned"
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "Medium"
+    behavioral_reason: |
+      last_active_days_ago=215; recruiter_response_rate=0.49; interview_completion_rate=0.53; saved_by_recruiters_30d=3; github_activity_score=6.4
+    honeypot_risk: "Low"
+    honeypot_reason: |
+      minor mismatch
+    predicted_hidden_tier: "Tier 4"
+    tier_reason: |
+      Direct search/retrieval/ranking alignment with strong production evidence.
+  - candidate_id: CAND_0000022
+    title: "Mechanical Engineer"
+    years_experience_estimated: 1.1
+    one_sentence_profile_summary: "Professional with 1.1+ years of experience."
+    archetype: "Other"
+    reason: |
+      No strong search, retrieval, or ranking specialization dominates the profile.
+    retrieval_score: 2
+    retrieval_evidence: |
+      search
+    production_score: 1
+    production_evidence: |
+      production
+    product_vs_consulting: "Mixed"
+    consistency_score: 5
+    consistency_reason: |
+      Title, summary, and job history are broadly aligned.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "Medium"
+    behavioral_reason: |
+      last_active_days_ago=52; recruiter_response_rate=0.27; interview_completion_rate=0.45; saved_by_recruiters_30d=5; github_activity_score=-1
+    honeypot_risk: "High"
+    honeypot_reason: |
+      template reuse
+    predicted_hidden_tier: "Tier 1"
+    tier_reason: |
+      Mostly adjacent or generic profile for this target role.
+  - candidate_id: CAND_0000023
+    title: "Software Engineer"
+    years_experience_estimated: 3.7
+    one_sentence_profile_summary: "Software engineer with 3.7 years of experience across web, backend, and cloud systems."
+    archetype: "Software Engineer"
+    reason: |
+      General software engineering is the main recurring theme, with limited domain specialization.
+    retrieval_score: 0
+    retrieval_evidence: |
+      No explicit evidence.
+    production_score: 2
+    production_evidence: |
+      production; deployment; system ownership / operational work
+    product_vs_consulting: "Product-heavy"
+    consistency_score: 5
+    consistency_reason: |
+      Title, summary, and job history are broadly aligned.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "High"
+    behavioral_reason: |
+      last_active_days_ago=79; recruiter_response_rate=0.57; interview_completion_rate=0.9; saved_by_recruiters_30d=14; github_activity_score=48.5
+    honeypot_risk: "None"
+    honeypot_reason: |
+      No strong honeypot indicators beyond normal synthetic-profile noise.
+    predicted_hidden_tier: "Tier 3"
+    tier_reason: |
+      General engineering profile with some AI-adjacent indicators.
+  - candidate_id: CAND_0000024
+    title: "HR Manager"
+    years_experience_estimated: 7.5
+    one_sentence_profile_summary: "Professional with 7.5+ years of experience."
+    archetype: "Consulting ML Engineer"
+    reason: |
+      Business or consulting title plus some AI or data signals make it adjacent rather than core.
+    retrieval_score: 2
+    retrieval_evidence: |
+      search
+    production_score: 2
+    production_evidence: |
+      production; kubernetes
+    product_vs_consulting: "Product-heavy"
+    consistency_score: 5
+    consistency_reason: |
+      Title, summary, and job history are broadly aligned.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "Medium"
+    behavioral_reason: |
+      last_active_days_ago=155; recruiter_response_rate=0.78; interview_completion_rate=0.72; saved_by_recruiters_30d=7; github_activity_score=46.3
+    honeypot_risk: "High"
+    honeypot_reason: |
+      template reuse
+    predicted_hidden_tier: "Tier 2"
+    tier_reason: |
+      Mostly adjacent business/consulting work with AI buzzwords rather than core retrieval/ranking depth.
+  - candidate_id: CAND_0000025
+    title: "Frontend Engineer"
+    years_experience_estimated: 7.3
+    one_sentence_profile_summary: "Software engineer with 7.3 years of experience across web, backend, and cloud systems."
+    archetype: "Product Engineer"
+    reason: |
+      Frontend or full-stack product-facing engineering is the clearest repeated theme.
+    retrieval_score: 0
+    retrieval_evidence: |
+      No explicit evidence.
+    production_score: 3
+    production_evidence: |
+      production; deployment; pipelines; system ownership / operational work
+    product_vs_consulting: "Product-heavy"
+    consistency_score: 5
+    consistency_reason: |
+      Title, summary, and job history are broadly aligned.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "High"
+    behavioral_reason: |
+      last_active_days_ago=86; recruiter_response_rate=0.74; interview_completion_rate=0.7; saved_by_recruiters_30d=9; github_activity_score=-1
+    honeypot_risk: "None"
+    honeypot_reason: |
+      No strong honeypot indicators beyond normal synthetic-profile noise.
+    predicted_hidden_tier: "Tier 3"
+    tier_reason: |
+      General engineering profile with some AI-adjacent indicators.
+  - candidate_id: CAND_0000026
+    title: "Graphic Designer"
+    years_experience_estimated: 6.8
+    one_sentence_profile_summary: "Professional with 6.8+ years of experience."
+    archetype: "Other"
+    reason: |
+      No strong search, retrieval, or ranking specialization dominates the profile.
+    retrieval_score: 2
+    retrieval_evidence: |
+      search
+    production_score: 3
+    production_evidence: |
+      production; airflow; kubernetes
+    product_vs_consulting: "Mixed"
+    consistency_score: 5
+    consistency_reason: |
+      Title, summary, and job history are broadly aligned.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "Low"
+    behavioral_reason: |
+      last_active_days_ago=264; recruiter_response_rate=0.59; interview_completion_rate=0.49; saved_by_recruiters_30d=11; github_activity_score=-1
+    honeypot_risk: "High"
+    honeypot_reason: |
+      template reuse
+    predicted_hidden_tier: "Tier 2"
+    tier_reason: |
+      Mostly adjacent or generic profile for this target role.
+  - candidate_id: CAND_0000027
+    title: "DevOps Engineer"
+    years_experience_estimated: 3.9
+    one_sentence_profile_summary: "Software engineer with 3.9 years of experience across web, backend, and cloud systems."
+    archetype: "MLOps Engineer"
+    reason: |
+      Operational ML infrastructure (Kubernetes, Airflow, Kubeflow, deployment tooling) dominates the profile.
+    retrieval_score: 2
+    retrieval_evidence: |
+      retrieval
+    production_score: 4
+    production_evidence: |
+      deployment; kafka; kubernetes; ci/cd; system ownership / operational work
+    product_vs_consulting: "Product-heavy"
+    consistency_score: 5
+    consistency_reason: |
+      Title, summary, and job history are broadly aligned.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "High"
+    behavioral_reason: |
+      last_active_days_ago=48; recruiter_response_rate=0.58; interview_completion_rate=0.61; saved_by_recruiters_30d=6; github_activity_score=38.6
+    honeypot_risk: "None"
+    honeypot_reason: |
+      No strong honeypot indicators beyond normal synthetic-profile noise.
+    predicted_hidden_tier: "Tier 4"
+    tier_reason: |
+      Strong infra/ML-adjacent work with some retrieval or production relevance.
+  - candidate_id: CAND_0000028
+    title: "Operations Manager"
+    years_experience_estimated: 1.1
+    one_sentence_profile_summary: "Professional with 1.1+ years of experience."
+    archetype: "Consulting ML Engineer"
+    reason: |
+      Business or consulting title plus some AI or data signals make it adjacent rather than core.
+    retrieval_score: 0
+    retrieval_evidence: |
+      No explicit evidence.
+    production_score: 2
+    production_evidence: |
+      production; pipelines
+    product_vs_consulting: "Mixed"
+    consistency_score: 3
+    consistency_reason: |
+      2 contradiction signal(s) detected from title/work-history/education mix. Work-history descriptions are heavily reused across unrelated titles.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "High"
+    behavioral_reason: |
+      last_active_days_ago=85; recruiter_response_rate=0.14; interview_completion_rate=0.86; saved_by_recruiters_30d=4; github_activity_score=-1
+    honeypot_risk: "Extreme"
+    honeypot_reason: |
+      some mismatches; template reuse; career-history mismatch
+    predicted_hidden_tier: "Tier 2"
+    tier_reason: |
+      Mostly adjacent business/consulting work with AI buzzwords rather than core retrieval/ranking depth.
+  - candidate_id: CAND_0000029
+    title: "Business Analyst"
+    years_experience_estimated: 7.2
+    one_sentence_profile_summary: "Professional with 7.2+ years of experience."
+    archetype: "Consulting ML Engineer"
+    reason: |
+      Business or consulting title plus some AI or data signals make it adjacent rather than core.
+    retrieval_score: 0
+    retrieval_evidence: |
+      No explicit evidence.
+    production_score: 2
+    production_evidence: |
+      production; ci/cd
+    product_vs_consulting: "Mixed"
+    consistency_score: 3
+    consistency_reason: |
+      2 contradiction signal(s) detected from title/work-history/education mix. Work-history descriptions are heavily reused across unrelated titles.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "Low"
+    behavioral_reason: |
+      last_active_days_ago=268; recruiter_response_rate=0.12; interview_completion_rate=0.67; saved_by_recruiters_30d=8; github_activity_score=42.5
+    honeypot_risk: "Extreme"
+    honeypot_reason: |
+      some mismatches; template reuse; career-history mismatch
+    predicted_hidden_tier: "Tier 2"
+    tier_reason: |
+      Mostly adjacent business/consulting work with AI buzzwords rather than core retrieval/ranking depth.
+  - candidate_id: CAND_0000030
+    title: "Marketing Manager"
+    years_experience_estimated: 10.0
+    one_sentence_profile_summary: "Professional with 10.0+ years of experience."
+    archetype: "Marketing + AI"
+    reason: |
+      Marketing-facing work is mixed with AI tooling or ML-adjacent keywords.
+    retrieval_score: 2
+    retrieval_evidence: |
+      search
+    production_score: 1
+    production_evidence: |
+      production
+    product_vs_consulting: "Mixed"
+    consistency_score: 5
+    consistency_reason: |
+      Title, summary, and job history are broadly aligned.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "Medium"
+    behavioral_reason: |
+      last_active_days_ago=240; recruiter_response_rate=0.66; interview_completion_rate=0.73; saved_by_recruiters_30d=1; github_activity_score=21.7
+    honeypot_risk: "High"
+    honeypot_reason: |
+      template reuse
+    predicted_hidden_tier: "Tier 2"
+    tier_reason: |
+      Mostly adjacent business/consulting work with AI buzzwords rather than core retrieval/ranking depth.
+  - candidate_id: CAND_0000031
+    title: "Recommendation Systems Engineer"
+    years_experience_estimated: 6.0
+    one_sentence_profile_summary: "Machine learning engineer with 6.0 years of experience building ML-powered features in production."
+    archetype: "Recommendation Engineer"
+    reason: |
+      Primary recommendation/search evidence from the title and explicit recommendation or embedding language in the profile.
+    retrieval_score: 5
+    retrieval_evidence: |
+      recommendation systems; retrieval; search; ranking; embeddings
+    production_score: 3
+    production_evidence: |
+      production; deployment; a/b; system ownership / operational work
+    product_vs_consulting: "Product-heavy"
+    consistency_score: 5
+    consistency_reason: |
+      Title, summary, and job history are broadly aligned.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: YES
+        evidence: "Pinecone mentioned in skills or experience."
+      FAISS:
+        status: YES
+        evidence: "FAISS mentioned in skills or experience."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: YES
+        evidence: "mentions vector DB / vector search tooling"
+      Embedding Systems:
+        status: YES
+        evidence: "embedding/embeddings mentioned"
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "High"
+    behavioral_reason: |
+      last_active_days_ago=31; recruiter_response_rate=0.91; interview_completion_rate=0.6; saved_by_recruiters_30d=13; github_activity_score=32.6
+    honeypot_risk: "None"
+    honeypot_reason: |
+      No strong honeypot indicators beyond normal synthetic-profile noise.
+    predicted_hidden_tier: "Tier 4"
+    tier_reason: |
+      Direct search/retrieval/ranking alignment with strong production evidence.
+  - candidate_id: CAND_0000032
+    title: ".NET Developer"
+    years_experience_estimated: 8.1
+    one_sentence_profile_summary: "Software engineer with 8.1 years of experience across web, backend, and cloud systems."
+    archetype: "Search Engineer"
+    reason: |
+      Search, retrieval, or vector-tech terms appear in the profile, suggesting search-oriented ML work.
+    retrieval_score: 2
+    retrieval_evidence: |
+      embeddings
+    production_score: 5
+    production_evidence: |
+      deployment; pipelines; kafka; kubernetes; ci/cd
+    product_vs_consulting: "Product-heavy"
+    consistency_score: 5
+    consistency_reason: |
+      Title, summary, and job history are broadly aligned.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: YES
+        evidence: "embedding/embeddings mentioned"
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "Medium"
+    behavioral_reason: |
+      last_active_days_ago=177; recruiter_response_rate=0.69; interview_completion_rate=0.78; saved_by_recruiters_30d=4; github_activity_score=-1
+    honeypot_risk: "None"
+    honeypot_reason: |
+      No strong honeypot indicators beyond normal synthetic-profile noise.
+    predicted_hidden_tier: "Tier 4"
+    tier_reason: |
+      Relevant search/retrieval/recommendation signals are present, but the profile is not fully clean or complete.
+  - candidate_id: CAND_0000033
+    title: "Graphic Designer"
+    years_experience_estimated: 8.6
+    one_sentence_profile_summary: "Professional with 8.6+ years of experience."
+    archetype: "Other"
+    reason: |
+      No strong search, retrieval, or ranking specialization dominates the profile.
+    retrieval_score: 0
+    retrieval_evidence: |
+      No explicit evidence.
+    production_score: 4
+    production_evidence: |
+      pipelines; airflow; kubernetes; ci/cd
+    product_vs_consulting: "Mixed"
+    consistency_score: 5
+    consistency_reason: |
+      Title, summary, and job history are broadly aligned.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "High"
+    behavioral_reason: |
+      last_active_days_ago=89; recruiter_response_rate=0.08; interview_completion_rate=0.37; saved_by_recruiters_30d=2; github_activity_score=38.3
+    honeypot_risk: "High"
+    honeypot_reason: |
+      template reuse
+    predicted_hidden_tier: "Tier 2"
+    tier_reason: |
+      Mostly adjacent or generic profile for this target role.
+  - candidate_id: CAND_0000034
+    title: "Business Analyst"
+    years_experience_estimated: 14.5
+    one_sentence_profile_summary: "Professional with 14.5+ years of experience."
+    archetype: "Consulting ML Engineer"
+    reason: |
+      Business or consulting title plus some AI or data signals make it adjacent rather than core.
+    retrieval_score: 2
+    retrieval_evidence: |
+      search
+    production_score: 1
+    production_evidence: |
+      production
+    product_vs_consulting: "Mixed"
+    consistency_score: 2
+    consistency_reason: |
+      3 contradiction signal(s) detected from title/work-history/education mix. Work-history descriptions are heavily reused across unrelated titles.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "Low"
+    behavioral_reason: |
+      last_active_days_ago=172; recruiter_response_rate=0.15; interview_completion_rate=0.41; saved_by_recruiters_30d=2; github_activity_score=-1
+    honeypot_risk: "Extreme"
+    honeypot_reason: |
+      several inconsistencies; template reuse; career-history mismatch
+    predicted_hidden_tier: "Tier 1"
+    tier_reason: |
+      Mostly adjacent business/consulting work with AI buzzwords rather than core retrieval/ranking depth.
+  - candidate_id: CAND_0000035
+    title: "Full Stack Developer"
+    years_experience_estimated: 4.3
+    one_sentence_profile_summary: "Software engineer with 4.3 years of experience across web, backend, and cloud systems."
+    archetype: "Recommendation Engineer"
+    reason: |
+      Primary recommendation/search evidence from the title and explicit recommendation or embedding language in the profile.
+    retrieval_score: 3
+    retrieval_evidence: |
+      recommendation systems
+    production_score: 5
+    production_evidence: |
+      deployment; pipelines; kafka; kubernetes; ci/cd
+    product_vs_consulting: "Product-heavy"
+    consistency_score: 5
+    consistency_reason: |
+      Title, summary, and job history are broadly aligned.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "Medium"
+    behavioral_reason: |
+      last_active_days_ago=138; recruiter_response_rate=0.34; interview_completion_rate=0.5; saved_by_recruiters_30d=1; github_activity_score=-1
+    honeypot_risk: "None"
+    honeypot_reason: |
+      No strong honeypot indicators beyond normal synthetic-profile noise.
+    predicted_hidden_tier: "Tier 4"
+    tier_reason: |
+      Relevant search/retrieval/recommendation signals are present, but the profile is not fully clean or complete.
+  - candidate_id: CAND_0000036
+    title: "Project Manager"
+    years_experience_estimated: 11.3
+    one_sentence_profile_summary: "Professional with 11.3+ years of experience."
+    archetype: "Other"
+    reason: |
+      No strong search, retrieval, or ranking specialization dominates the profile.
+    retrieval_score: 0
+    retrieval_evidence: |
+      No explicit evidence.
+    production_score: 1
+    production_evidence: |
+      production
+    product_vs_consulting: "Mixed"
+    consistency_score: 4
+    consistency_reason: |
+      1 contradiction signal(s) detected from title/work-history/education mix.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "Medium"
+    behavioral_reason: |
+      last_active_days_ago=194; recruiter_response_rate=0.4; interview_completion_rate=0.78; saved_by_recruiters_30d=0; github_activity_score=-1
+    honeypot_risk: "High"
+    honeypot_reason: |
+      minor mismatch; template reuse
+    predicted_hidden_tier: "Tier 1"
+    tier_reason: |
+      Mostly adjacent or generic profile for this target role.
+  - candidate_id: CAND_0000037
+    title: "Business Analyst"
+    years_experience_estimated: 14.3
+    one_sentence_profile_summary: "Professional with 14.3+ years of experience."
+    archetype: "Consulting ML Engineer"
+    reason: |
+      Business or consulting title plus some AI or data signals make it adjacent rather than core.
+    retrieval_score: 0
+    retrieval_evidence: |
+      No explicit evidence.
+    production_score: 1
+    production_evidence: |
+      production
+    product_vs_consulting: "Mixed"
+    consistency_score: 2
+    consistency_reason: |
+      3 contradiction signal(s) detected from title/work-history/education mix. Work-history descriptions are heavily reused across unrelated titles.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "Medium"
+    behavioral_reason: |
+      last_active_days_ago=195; recruiter_response_rate=0.78; interview_completion_rate=0.82; saved_by_recruiters_30d=1; github_activity_score=-1
+    honeypot_risk: "Extreme"
+    honeypot_reason: |
+      several inconsistencies; template reuse; career-history mismatch
+    predicted_hidden_tier: "Tier 1"
+    tier_reason: |
+      Mostly adjacent business/consulting work with AI buzzwords rather than core retrieval/ranking depth.
+  - candidate_id: CAND_0000038
+    title: "Java Developer"
+    years_experience_estimated: 6.7
+    one_sentence_profile_summary: "Software engineer with 6.7 years of experience across web, backend, and cloud systems."
+    archetype: "Software Engineer"
+    reason: |
+      General software engineering is the main recurring theme, with limited domain specialization.
+    retrieval_score: 1
+    retrieval_evidence: |
+      weaviate
+    production_score: 1
+    production_evidence: |
+      kafka; system ownership / operational work
+    product_vs_consulting: "Product-heavy"
+    consistency_score: 5
+    consistency_reason: |
+      Title, summary, and job history are broadly aligned.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: YES
+        evidence: "Weaviate mentioned in skills or experience."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: YES
+        evidence: "mentions vector DB / vector search tooling"
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "High"
+    behavioral_reason: |
+      last_active_days_ago=85; recruiter_response_rate=0.2; interview_completion_rate=0.75; saved_by_recruiters_30d=18; github_activity_score=37.8
+    honeypot_risk: "None"
+    honeypot_reason: |
+      No strong honeypot indicators beyond normal synthetic-profile noise.
+    predicted_hidden_tier: "Tier 3"
+    tier_reason: |
+      General engineering profile with some AI-adjacent indicators.
+  - candidate_id: CAND_0000039
+    title: "Marketing Manager"
+    years_experience_estimated: 3.9
+    one_sentence_profile_summary: "Professional with 3.9+ years of experience."
+    archetype: "Marketing + AI"
+    reason: |
+      Marketing-facing work is mixed with AI tooling or ML-adjacent keywords.
+    retrieval_score: 0
+    retrieval_evidence: |
+      No explicit evidence.
+    production_score: 2
+    production_evidence: |
+      production; ci/cd
+    product_vs_consulting: "Mixed"
+    consistency_score: 3
+    consistency_reason: |
+      2 contradiction signal(s) detected from title/work-history/education mix. Work-history descriptions are heavily reused across unrelated titles.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "High"
+    behavioral_reason: |
+      last_active_days_ago=67; recruiter_response_rate=0.52; interview_completion_rate=0.74; saved_by_recruiters_30d=6; github_activity_score=-1
+    honeypot_risk: "Extreme"
+    honeypot_reason: |
+      some mismatches; template reuse; career-history mismatch
+    predicted_hidden_tier: "Tier 2"
+    tier_reason: |
+      Mostly adjacent business/consulting work with AI buzzwords rather than core retrieval/ranking depth.
+  - candidate_id: CAND_0000040
+    title: "Customer Support"
+    years_experience_estimated: 1.6
+    one_sentence_profile_summary: "Professional with 1.6+ years of experience."
+    archetype: "Consulting ML Engineer"
+    reason: |
+      Business or consulting title plus some AI or data signals make it adjacent rather than core.
+    retrieval_score: 0
+    retrieval_evidence: |
+      No explicit evidence.
+    production_score: 0
+    production_evidence: |
+      No explicit evidence.
+    product_vs_consulting: "Mixed"
+    consistency_score: 3
+    consistency_reason: |
+      2 contradiction signal(s) detected from title/work-history/education mix. Work-history descriptions are heavily reused across unrelated titles.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "Medium"
+    behavioral_reason: |
+      last_active_days_ago=144; recruiter_response_rate=0.46; interview_completion_rate=0.8; saved_by_recruiters_30d=1; github_activity_score=-1
+    honeypot_risk: "High"
+    honeypot_reason: |
+      some mismatches; template reuse
+    predicted_hidden_tier: "Tier 2"
+    tier_reason: |
+      Mostly adjacent business/consulting work with AI buzzwords rather than core retrieval/ranking depth.
+  - candidate_id: CAND_0000041
+    title: "Operations Manager"
+    years_experience_estimated: 13.7
+    one_sentence_profile_summary: "Professional with 13.7+ years of experience."
+    archetype: "Consulting ML Engineer"
+    reason: |
+      Business or consulting title plus some AI or data signals make it adjacent rather than core.
+    retrieval_score: 0
+    retrieval_evidence: |
+      No explicit evidence.
+    production_score: 3
+    production_evidence: |
+      production; airflow; kubernetes
+    product_vs_consulting: "Mixed"
+    consistency_score: 2
+    consistency_reason: |
+      3 contradiction signal(s) detected from title/work-history/education mix. Work-history descriptions are heavily reused across unrelated titles.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "High"
+    behavioral_reason: |
+      last_active_days_ago=100; recruiter_response_rate=0.07; interview_completion_rate=0.85; saved_by_recruiters_30d=6; github_activity_score=-1
+    honeypot_risk: "Extreme"
+    honeypot_reason: |
+      several inconsistencies; template reuse; career-history mismatch
+    predicted_hidden_tier: "Tier 1"
+    tier_reason: |
+      Mostly adjacent business/consulting work with AI buzzwords rather than core retrieval/ranking depth.
+  - candidate_id: CAND_0000042
+    title: "HR Manager"
+    years_experience_estimated: 5.0
+    one_sentence_profile_summary: "Professional with 5.0+ years of experience."
+    archetype: "Consulting ML Engineer"
+    reason: |
+      Business or consulting title plus some AI or data signals make it adjacent rather than core.
+    retrieval_score: 2
+    retrieval_evidence: |
+      search
+    production_score: 1
+    production_evidence: |
+      production
+    product_vs_consulting: "Mixed"
+    consistency_score: 3
+    consistency_reason: |
+      2 contradiction signal(s) detected from title/work-history/education mix. Work-history descriptions are heavily reused across unrelated titles.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "Low"
+    behavioral_reason: |
+      last_active_days_ago=244; recruiter_response_rate=0.58; interview_completion_rate=0.35; saved_by_recruiters_30d=9; github_activity_score=-1
+    honeypot_risk: "High"
+    honeypot_reason: |
+      some mismatches; template reuse
+    predicted_hidden_tier: "Tier 2"
+    tier_reason: |
+      Mostly adjacent business/consulting work with AI buzzwords rather than core retrieval/ranking depth.
+  - candidate_id: CAND_0000043
+    title: "Cloud Engineer"
+    years_experience_estimated: 8.3
+    one_sentence_profile_summary: "Software engineer with 8.3 years of experience across web, backend, and cloud systems."
+    archetype: "Search Engineer"
+    reason: |
+      Search, retrieval, or vector-tech terms appear in the profile, suggesting search-oriented ML work.
+    retrieval_score: 4
+    retrieval_evidence: |
+      search; elasticsearch; opensearch; haystack
+    production_score: 5
+    production_evidence: |
+      production; deployment; monitoring; pipelines; airflow
+    product_vs_consulting: "Product-heavy"
+    consistency_score: 5
+    consistency_reason: |
+      Title, summary, and job history are broadly aligned.
+    search_technologies:
+      Elasticsearch:
+        status: YES
+        evidence: "Elasticsearch mentioned in skills or experience."
+      OpenSearch:
+        status: YES
+        evidence: "OpenSearch mentioned in skills or experience."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "Medium"
+    behavioral_reason: |
+      last_active_days_ago=174; recruiter_response_rate=0.04; interview_completion_rate=0.72; saved_by_recruiters_30d=2; github_activity_score=-1
+    honeypot_risk: "None"
+    honeypot_reason: |
+      No strong honeypot indicators beyond normal synthetic-profile noise.
+    predicted_hidden_tier: "Tier 4"
+    tier_reason: |
+      Direct search/retrieval/ranking alignment with strong production evidence.
+  - candidate_id: CAND_0000044
+    title: "Frontend Engineer"
+    years_experience_estimated: 5.7
+    one_sentence_profile_summary: "Software engineer with 5.7 years of experience across web, backend, and cloud systems."
+    archetype: "Product Engineer"
+    reason: |
+      Frontend or full-stack product-facing engineering is the clearest repeated theme.
+    retrieval_score: 0
+    retrieval_evidence: |
+      No explicit evidence.
+    production_score: 2
+    production_evidence: |
+      kafka; ci/cd; system ownership / operational work
+    product_vs_consulting: "Product-heavy"
+    consistency_score: 5
+    consistency_reason: |
+      Title, summary, and job history are broadly aligned.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "Medium"
+    behavioral_reason: |
+      last_active_days_ago=195; recruiter_response_rate=0.66; interview_completion_rate=0.66; saved_by_recruiters_30d=18; github_activity_score=6.5
+    honeypot_risk: "None"
+    honeypot_reason: |
+      No strong honeypot indicators beyond normal synthetic-profile noise.
+    predicted_hidden_tier: "Tier 3"
+    tier_reason: |
+      General engineering profile with some AI-adjacent indicators.
+  - candidate_id: CAND_0000045
+    title: "Project Manager"
+    years_experience_estimated: 12.2
+    one_sentence_profile_summary: "Professional with 12.2+ years of experience."
+    archetype: "Other"
+    reason: |
+      No strong search, retrieval, or ranking specialization dominates the profile.
+    retrieval_score: 0
+    retrieval_evidence: |
+      No explicit evidence.
+    production_score: 2
+    production_evidence: |
+      production; airflow
+    product_vs_consulting: "Mixed"
+    consistency_score: 4
+    consistency_reason: |
+      1 contradiction signal(s) detected from title/work-history/education mix.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "High"
+    behavioral_reason: |
+      last_active_days_ago=61; recruiter_response_rate=0.62; interview_completion_rate=0.33; saved_by_recruiters_30d=6; github_activity_score=-1
+    honeypot_risk: "High"
+    honeypot_reason: |
+      minor mismatch; template reuse
+    predicted_hidden_tier: "Tier 1"
+    tier_reason: |
+      Mostly adjacent or generic profile for this target role.
+  - candidate_id: CAND_0000046
+    title: "Mechanical Engineer"
+    years_experience_estimated: 7.8
+    one_sentence_profile_summary: "Professional with 7.8+ years of experience."
+    archetype: "Other"
+    reason: |
+      No strong search, retrieval, or ranking specialization dominates the profile.
+    retrieval_score: 0
+    retrieval_evidence: |
+      No explicit evidence.
+    production_score: 0
+    production_evidence: |
+      No explicit evidence.
+    product_vs_consulting: "Mixed"
+    consistency_score: 3
+    consistency_reason: |
+      2 contradiction signal(s) detected from title/work-history/education mix.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "Medium"
+    behavioral_reason: |
+      last_active_days_ago=124; recruiter_response_rate=0.41; interview_completion_rate=0.4; saved_by_recruiters_30d=7; github_activity_score=20.9
+    honeypot_risk: "High"
+    honeypot_reason: |
+      some mismatches; template reuse
+    predicted_hidden_tier: "Tier 1"
+    tier_reason: |
+      Mostly adjacent or generic profile for this target role.
+  - candidate_id: CAND_0000047
+    title: "Project Manager"
+    years_experience_estimated: 2.4
+    one_sentence_profile_summary: "Professional with 2.4+ years of experience."
+    archetype: "Other"
+    reason: |
+      No strong search, retrieval, or ranking specialization dominates the profile.
+    retrieval_score: 0
+    retrieval_evidence: |
+      No explicit evidence.
+    production_score: 0
+    production_evidence: |
+      No explicit evidence.
+    product_vs_consulting: "Mixed"
+    consistency_score: 5
+    consistency_reason: |
+      Title, summary, and job history are broadly aligned.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "Medium"
+    behavioral_reason: |
+      last_active_days_ago=94; recruiter_response_rate=0.39; interview_completion_rate=0.54; saved_by_recruiters_30d=4; github_activity_score=-1
+    honeypot_risk: "High"
+    honeypot_reason: |
+      template reuse
+    predicted_hidden_tier: "Tier 1"
+    tier_reason: |
+      Mostly adjacent or generic profile for this target role.
+  - candidate_id: CAND_0000048
+    title: "Mobile Developer"
+    years_experience_estimated: 9.7
+    one_sentence_profile_summary: "Software engineer with 9.7 years of experience across web, backend, and cloud systems."
+    archetype: "Product Engineer"
+    reason: |
+      Frontend or full-stack product-facing engineering is the clearest repeated theme.
+    retrieval_score: 0
+    retrieval_evidence: |
+      No explicit evidence.
+    production_score: 3
+    production_evidence: |
+      production; deployment; kafka; system ownership / operational work
+    product_vs_consulting: "Product-heavy"
+    consistency_score: 5
+    consistency_reason: |
+      Title, summary, and job history are broadly aligned.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "High"
+    behavioral_reason: |
+      last_active_days_ago=79; recruiter_response_rate=0.65; interview_completion_rate=0.42; saved_by_recruiters_30d=5; github_activity_score=-1
+    honeypot_risk: "None"
+    honeypot_reason: |
+      No strong honeypot indicators beyond normal synthetic-profile noise.
+    predicted_hidden_tier: "Tier 3"
+    tier_reason: |
+      General engineering profile with some AI-adjacent indicators.
+  - candidate_id: CAND_0000049
+    title: "Mechanical Engineer"
+    years_experience_estimated: 11.8
+    one_sentence_profile_summary: "Professional with 11.8+ years of experience."
+    archetype: "Other"
+    reason: |
+      No strong search, retrieval, or ranking specialization dominates the profile.
+    retrieval_score: 0
+    retrieval_evidence: |
+      No explicit evidence.
+    production_score: 2
+    production_evidence: |
+      pipelines; kubernetes
+    product_vs_consulting: "Mixed"
+    consistency_score: 5
+    consistency_reason: |
+      Title, summary, and job history are broadly aligned.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "High"
+    behavioral_reason: |
+      last_active_days_ago=42; recruiter_response_rate=0.59; interview_completion_rate=0.56; saved_by_recruiters_30d=6; github_activity_score=-1
+    honeypot_risk: "High"
+    honeypot_reason: |
+      template reuse
+    predicted_hidden_tier: "Tier 1"
+    tier_reason: |
+      Mostly adjacent or generic profile for this target role.
+  - candidate_id: CAND_0000050
+    title: "Business Analyst"
+    years_experience_estimated: 13.5
+    one_sentence_profile_summary: "Professional with 13.5+ years of experience."
+    archetype: "Consulting ML Engineer"
+    reason: |
+      Business or consulting title plus some AI or data signals make it adjacent rather than core.
+    retrieval_score: 0
+    retrieval_evidence: |
+      No explicit evidence.
+    production_score: 3
+    production_evidence: |
+      production; pipelines; kafka
+    product_vs_consulting: "Mixed"
+    consistency_score: 2
+    consistency_reason: |
+      3 contradiction signal(s) detected from title/work-history/education mix. Work-history descriptions are heavily reused across unrelated titles.
+    search_technologies:
+      Elasticsearch:
+        status: NO
+        evidence: "No explicit Elasticsearch mention."
+      OpenSearch:
+        status: NO
+        evidence: "No explicit OpenSearch mention."
+      Pinecone:
+        status: NO
+        evidence: "No explicit Pinecone mention."
+      FAISS:
+        status: NO
+        evidence: "No explicit FAISS mention."
+      Milvus:
+        status: NO
+        evidence: "No explicit Milvus mention."
+      Weaviate:
+        status: NO
+        evidence: "No explicit Weaviate mention."
+      Lucene:
+        status: NO
+        evidence: "No explicit Lucene mention."
+      Solr:
+        status: NO
+        evidence: "No explicit Solr mention."
+      Vector Databases:
+        status: NO
+        evidence: "No explicit vector DB mention."
+      Embedding Systems:
+        status: NO
+        evidence: "No explicit embedding mention."
+    evaluation_score: 0
+    evaluation_evidence: |
+      No explicit evidence.
+    behavioral_quality: "Low"
+    behavioral_reason: |
+      last_active_days_ago=245; recruiter_response_rate=0.42; interview_completion_rate=0.58; saved_by_recruiters_30d=2; github_activity_score=44.7
+    honeypot_risk: "Extreme"
+    honeypot_reason: |
+      several inconsistencies; template reuse; career-history mismatch
+    predicted_hidden_tier: "Tier 1"
+    tier_reason: |
+      Mostly adjacent business/consulting work with AI buzzwords rather than core retrieval/ranking depth.

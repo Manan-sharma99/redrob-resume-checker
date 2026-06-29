@@ -1,0 +1,19 @@
+Term,Mentions,Current Extraction Status,Estimated False Negatives,Expected Ranking Impact
+ANN,0,Not Extracted,0,Low
+HNSW,11,Not Extracted,0,Low
+IVF,0,Not Extracted,0,Low
+ScaNN,0,Not Extracted,0,Low
+Lucene,0,Not Extracted,0,Low
+Vespa,0,Not Extracted,0,Low
+Redis Vector,18,Not Extracted,0,Low
+Weaviate,1389,Not Extracted,725,High
+ColBERT,0,Not Extracted,0,Low
+SPLADE,0,Not Extracted,0,Low
+Cross Encoder,0,Not Extracted,0,Low
+Dual Encoder,0,Not Extracted,0,Low
+Semantic Indexing,0,Not Extracted,0,Low
+Candidate Retrieval,0,Not Extracted,0,Low
+Re-ranking,345,Extracted,0,Medium
+Hard Negative Mining,0,Not Extracted,0,Low
+LLM Ranker,0,Not Extracted,0,Low
+BM25,1432,Extracted,0,High

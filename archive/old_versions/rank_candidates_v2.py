@@ -1,0 +1,598 @@
+#!/usr/bin/env python3
+"""
+Final Ranking Pipeline — Senior AI Engineer (Search / Retrieval / Ranking)
+==========================================================================
+
+Architecture:
+    Stage 1 : Hard Reject   — objectively impossible profiles removed
+    Stage 2 : Relevance     — dominant signal (retrieval + recommendation + evaluation)
+    Stage 3 : Credibility   — do we believe the candidate did the work?
+    Stage 4 : Negative Signals — consulting-only, buzzword, framework, title-chasing penalties
+    Stage 5 : Final Score   — weighted composite (relevance >> credibility >> penalty)
+
+Outputs:
+    ranked_candidates.parquet  — full ranked table with all scores
+    final_submission.csv       — top-100 candidates
+    ranking_diagnostics.md     — score distributions and diagnostic tables
+"""
+
+from __future__ import annotations
+
+import math
+from pathlib import Path
+
+import pandas as pd
+import numpy as np
+
+# ---------------------------------------------------------------------------
+# Paths
+# ---------------------------------------------------------------------------
+INPUT_PARQUET = Path("candidate_features.parquet")
+OUTPUT_PARQUET = Path("ranked_candidates_v2.parquet")
+SUBMISSION_CSV = Path("final_submission.csv")
+DIAGNOSTICS_MD = Path("ranking_diagnostics.md")
+
+# ---------------------------------------------------------------------------
+# Stage weights (must sum to 1.0)
+# ---------------------------------------------------------------------------
+# Relevance is the dominant signal per architecture spec.
+# Credibility is secondary.
+# Penalty is subtractive — applied after combining relevance + credibility.
+
+RELEVANCE_WEIGHT = 0.65      # Stage 2 — retrieval relevance dominates
+CREDIBILITY_WEIGHT = 0.35    # Stage 3 — credibility modulates relevance
+
+# Within relevance score:
+#   retrieval_score     : primary (search/IR/ranking/relevance)
+#   evaluation_score    : strong secondary (NDCG/MRR/MAP/AB testing — very rare, very high signal)
+#   recommendation_score: supporting (personalisation/matching/feed ranking)
+RETRIEVAL_W = 0.60
+EVALUATION_W = 0.25
+RECOMMENDATION_W = 0.15
+
+# Within credibility score:
+#   production_score        : production infrastructure depth
+#   specificity_score       : concrete metrics, latency numbers, scale evidence
+#   evidence_support_score  : skill claims corroborated by career descriptions
+PRODUCTION_W = 0.40
+SPECIFICITY_W = 0.35
+EVIDENCE_W = 0.25
+
+# ---------------------------------------------------------------------------
+# Negative signal penalty weights
+# ---------------------------------------------------------------------------
+# Each penalty reduces final_score additively. Total penalty is capped at 0.35
+# so that a strong candidate with minor negatives is not eliminated.
+
+PENALTY_CONSULTING_ONLY = 0.30    # Hard: entire career is consulting
+PENALTY_CONSULTING_HEAVY = 0.10   # Soft: >60% of career months at consulting firms
+PENALTY_TITLE_CHASER = 0.06       # Rapid title escalation (high progression + many jobs + short tenures)
+PENALTY_BEHAVIOR_LOW = 0.02       # Very low behavioral signals (tie-breaker relevance)
+MAX_PENALTY = 0.35
+
+# ---------------------------------------------------------------------------
+# Hard reject thresholds
+# ---------------------------------------------------------------------------
+# contradiction_score > 0 means objectively impossible timelines exist.
+# Per the feature pipeline docs: contradiction_score uses 15-45 point penalties
+# for severe violations. We keep the threshold generous to avoid penalising
+# genuine edge cases. Only clearly broken profiles are rejected.
+HARD_REJECT_CONTRADICTION_THRESHOLD = 30.0   # severe multi-violation profiles
+
+
+# ===========================================================================
+# Stage 1: Hard Reject
+# ===========================================================================
+
+def apply_hard_reject(df: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """
+    Remove candidates with objectively impossible profiles.
+
+    Criteria (all objective, not subjective):
+      - contradiction_score above threshold: multiple severe date/timeline violations
+      - consulting_only_flag with zero relevance: full consulting career, no domain signal
+
+    Returns (kept, rejected) DataFrames.
+    """
+    mask_contradiction = df["contradiction_score"] >= HARD_REJECT_CONTRADICTION_THRESHOLD
+
+    # Consulting-only is a hard rejection ONLY when combined with zero retrieval relevance.
+    # A consulting-only candidate who genuinely worked on retrieval systems is not rejected here —
+    # they will be penalised in Stage 4 but not removed.
+    mask_consulting_zero = (
+        df["consulting_only_flag"]
+        & (df["retrieval_score"] == 0)
+        & (df["recommendation_score"] == 0)
+        & (df["evaluation_score"] == 0)
+    )
+
+    reject_mask = mask_contradiction | mask_consulting_zero
+
+    rejected = df[reject_mask].copy()
+    kept = df[~reject_mask].copy()
+
+    rejected["reject_reason"] = ""
+    rejected.loc[mask_contradiction[reject_mask], "reject_reason"] += "contradiction;"
+    rejected.loc[mask_consulting_zero[reject_mask], "reject_reason"] += "consulting_zero_relevance;"
+
+    return kept, rejected
+
+
+# ===========================================================================
+# Stage 2: Relevance Score
+# ===========================================================================
+
+def compute_relevance_score(df: pd.DataFrame) -> pd.Series:
+    """
+    Primary ranking signal. Measures how closely the candidate aligns with
+    search / retrieval / ranking / recommendation / matching / personalization.
+
+    Components:
+        retrieval_score     (60%) — search, IR, ranking, relevance, re-ranking
+        evaluation_score    (25%) — NDCG, MRR, MAP, A/B testing, offline/online eval
+                                     [very rare in dataset: ~2% non-zero — extremely discriminating]
+        recommendation_score(15%) — personalisation, matching, feed ranking, marketplace
+
+    All inputs are 0-100. Output normalised to 0-1.
+    """
+    r = df["retrieval_score"] / 100.0
+    e = df["evaluation_score"] / 100.0
+    rec = df["recommendation_score"] / 100.0
+
+    raw = np.maximum(r, rec) * 0.75 + e * 0.25
+
+    # Evaluation bonus: evaluation_score is a very rare, high-confidence signal
+    # (~2% of candidates have it). Candidates with genuine eval experience get a
+    # multiplicative lift to break ties among high-retrieval candidates.
+    # This makes evaluation score a meaningful differentiator without overweighting it.
+    eval_bonus = 0.0   # ~1 term detected
+      # 2+ terms
+
+    return (raw + eval_bonus).clip(0, 1)
+
+
+# ===========================================================================
+# Stage 3: Credibility Score
+# ===========================================================================
+
+def compute_credibility_score(df: pd.DataFrame) -> pd.Series:
+    """
+    Measures whether we believe the candidate actually did the work.
+
+    Components:
+        production_score       (40%) — action verbs, named infra, production signals,
+                                        per-role co-occurrence. Rewards operators.
+        specificity_score      (35%) — concrete metrics, latency numbers, scale evidence,
+                                        quantified improvements. Hard to fake without knowledge.
+        evidence_support_score (25%) — claimed skills corroborated by career descriptions.
+                                        Directly detects keyword stuffers.
+
+    evidence_support_score is 0 when no relevant skill claims exist at all.
+    We treat 0 as a mild negative signal: no claims made = no evidence needed,
+    but evidence present and unsupported = strong negative.
+
+    Output normalised to 0-1.
+    """
+    p = df["production_score"] / 100.0
+    s = df["specificity_score"] / 100.0
+    e = df["evidence_support_score"] / 100.0
+
+    raw = PRODUCTION_W * p + SPECIFICITY_W * s + EVIDENCE_W * e
+
+    # Unsupported-claims penalty: if evidence_support_score is non-zero but low,
+    # it means skills were claimed but not backed by career descriptions.
+    # This is the keyword stuffer signature.
+    # Penalty only fires when skills were claimed (evidence_support_score > 0) and
+    # poorly supported (< 50), meaning the claim-to-evidence ratio is bad.
+    unsupported_mask = (df["evidence_support_score"] > 0) & (df["evidence_support_score"] < 50)
+    unsupported_penalty = np.where(unsupported_mask, 0.05, 0.0)
+
+    return (raw - unsupported_penalty).clip(0, 1)
+
+
+# ===========================================================================
+# Stage 4: Negative Signal Score
+# ===========================================================================
+
+def compute_negative_signal_score(df: pd.DataFrame) -> pd.Series:
+    """
+    Detects JD-explicit disqualifiers and returns a penalty (0-MAX_PENALTY).
+
+    Penalties are ADDITIVE and capped at MAX_PENALTY to avoid eliminating
+    strong candidates for minor negatives.
+
+    Disqualifiers:
+      1. Consulting-only career           : highest penalty (full career advisory)
+      2. Heavy consulting ratio (>60%)    : moderate penalty
+      3. Title chasing                    : rapid escalation + many jobs + short tenures
+      4. Very low behavioral signals      : tie-breaker penalty only
+
+    Note: Framework buzzword detection (LangChain, RAG, GPT, etc.) is NOT
+    available as a pre-computed feature. The feature extractor did not extract
+    these terms. We rely on evidence_support_score and retrieval_score to
+    implicitly penalise profiles that use buzzwords without backing evidence.
+    Explicitly, we penalise via the unsupported-claims mechanism in Stage 3.
+    """
+    penalty = pd.Series(0.0, index=df.index)
+
+    # --- 1. Consulting-only career ---
+    # Any consulting-only candidate remaining after Stage 1 has some domain signal.
+    # Still penalised, but not rejected.
+    penalty += np.where(df["consulting_only_flag"], PENALTY_CONSULTING_ONLY, 0.0)
+
+    # --- 2. Heavy consulting (>60% of career months at consulting firms) ---
+    # Applied only when not already flagged as consulting_only to avoid double-counting.
+    heavy_consulting = (~df["consulting_only_flag"]) & (df["consulting_ratio"] > 0.60)
+    penalty += np.where(heavy_consulting, PENALTY_CONSULTING_HEAVY, 0.0)
+
+    # --- 3. Title chasing ---
+    # Signature: high title_progression_score (rapid upward movement in titles)
+    # + many short tenures + many jobs in total.
+    # title_progression_score > 75 = above-median escalation speed.
+    # short_tenure_count >= 2 = at least 2 roles under 12 months.
+    # job_count >= 4 = enough jobs to demonstrate a pattern.
+    title_chaser = (
+        (df["title_progression_score"] > 75)
+        & (df["short_tenure_count"] >= 2)
+        & (df["job_count"] >= 4)
+    )
+    penalty += np.where(title_chaser, PENALTY_TITLE_CHASER, 0.0)
+
+    # --- 4. Very low behavioral signals (tie-breaker relevance, very small penalty) ---
+    # behavior_score < 25th percentile indicates very low platform engagement.
+    # Used as a minor deprioritiser for otherwise equal candidates.
+    # NOT used as a quality gate — only as a final tie-breaker.
+    behavior_p25 = df["behavior_score"].quantile(0.25)
+    low_behavior = df["behavior_score"] < behavior_p25
+    penalty += np.where(low_behavior, PENALTY_BEHAVIOR_LOW, 0.0)
+
+    return penalty.clip(0, MAX_PENALTY)
+
+
+# ===========================================================================
+# Stage 5: Final Score
+# ===========================================================================
+
+def compute_final_score(
+    relevance: pd.Series,
+    credibility: pd.Series,
+    penalty: pd.Series,
+) -> pd.Series:
+    """
+    Final composite score:
+
+        base = relevance * RELEVANCE_WEIGHT + credibility * CREDIBILITY_WEIGHT
+        final = (base - penalty).clip(0, 1)
+
+    Credibility MULTIPLIES relevance rather than adding independently.
+    A candidate with zero relevance gets zero final score regardless of credibility.
+    This ensures the system selects for JD alignment first, then depth.
+
+    Penalty is subtractive after the base is computed.
+    """
+    # Credibility acts as a modulator on relevance, not an independent score.
+    # We blend them such that zero relevance means zero final score.
+    # This prevents a highly credible but irrelevant candidate from ranking high.
+    base = relevance * RELEVANCE_WEIGHT + (relevance * credibility) * CREDIBILITY_WEIGHT
+
+    final = (base - penalty).clip(0, 1)
+    return final
+
+
+# ===========================================================================
+# Pipeline runner
+# ===========================================================================
+
+def run_pipeline() -> None:
+    print("=" * 65)
+    print("RANKING PIPELINE — Senior AI Engineer (Search/Retrieval/Ranking)")
+    print("=" * 65)
+
+    # --- Load features ---
+    print(f"\n[1/7] Loading features from {INPUT_PARQUET} ...")
+    df = pd.read_parquet(INPUT_PARQUET)
+    total_candidates = len(df)
+    print(f"      Loaded {total_candidates:,} candidates.")
+
+    # --- Stage 1: Hard Reject ---
+    print("\n[2/7] Stage 1: Hard Reject ...")
+    kept, rejected = apply_hard_reject(df)
+    n_rejected = len(rejected)
+    n_kept = len(kept)
+    print(f"      Rejected: {n_rejected:,}  |  Kept: {n_kept:,}")
+    if n_rejected > 0:
+        reason_counts = (
+            rejected["reject_reason"].str.split(";", expand=False)
+            .explode()
+            .value_counts()
+        )
+        print("      Rejection reasons:")
+        for reason, count in reason_counts.items():
+            if reason:
+                print(f"        {reason}: {count}")
+
+    # --- Stage 2: Relevance ---
+    print("\n[3/7] Stage 2: Computing Relevance Score ...")
+    kept["relevance_score"] = compute_relevance_score(kept)
+    print(f"      Mean: {kept['relevance_score'].mean():.4f}  |  "
+          f"Non-zero: {(kept['relevance_score'] > 0).sum():,}  |  "
+          f"Max: {kept['relevance_score'].max():.4f}")
+
+    # --- Stage 3: Credibility ---
+    print("\n[4/7] Stage 3: Computing Credibility Score ...")
+    kept["credibility_score"] = compute_credibility_score(kept)
+    print(f"      Mean: {kept['credibility_score'].mean():.4f}  |  "
+          f"Max: {kept['credibility_score'].max():.4f}")
+
+    # --- Stage 4: Negative Signals ---
+    print("\n[5/7] Stage 4: Computing Negative Signal Penalties ...")
+    kept["negative_signal_score"] = compute_negative_signal_score(kept)
+    penalised = (kept["negative_signal_score"] > 0).sum()
+    print(f"      Candidates with any penalty: {penalised:,}")
+    consulting_penalised = kept["consulting_only_flag"].sum()
+    heavy_consulting = ((~kept["consulting_only_flag"]) & (kept["consulting_ratio"] > 0.60)).sum()
+    title_chasers = (
+        (kept["title_progression_score"] > 75)
+        & (kept["short_tenure_count"] >= 2)
+        & (kept["job_count"] >= 4)
+    ).sum()
+    print(f"        consulting_only : {consulting_penalised:,}")
+    print(f"        heavy_consulting: {heavy_consulting:,}")
+    print(f"        title_chasers   : {title_chasers:,}")
+
+    # --- Stage 5: Final Score ---
+    print("\n[6/7] Stage 5: Computing Final Score ...")
+    kept["final_score"] = compute_final_score(
+        kept["relevance_score"],
+        kept["credibility_score"],
+        kept["negative_signal_score"],
+    )
+
+    # --- Rank ---
+    # Use strictly sequential ranks with no ties.
+    # Tie-break: final_score desc, then candidate_id ascending (required by challenge validator).
+    kept = kept.sort_values(
+        ["final_score", "candidate_id"],
+        ascending=[False, True],
+    ).reset_index(drop=True)
+    kept["rank"] = kept.index + 1
+
+    print(f"      Final score range: {kept['final_score'].min():.4f} – {kept['final_score'].max():.4f}")
+
+    # --- Output: ranked_candidates.parquet ---
+    print(f"\n[7/7] Writing outputs ...")
+    output_cols = [
+        "candidate_id",
+        "relevance_score",
+        "credibility_score",
+        "negative_signal_score",
+        "final_score",
+        "rank",
+    ]
+    ranked_output = kept[output_cols].copy()
+    ranked_output.to_parquet(OUTPUT_PARQUET, index=False)
+    print(f"      Wrote {OUTPUT_PARQUET} ({len(ranked_output):,} rows)")
+
+    # --- Output: final_submission.csv ---
+    top100 = kept[kept["rank"] <= 100].copy()
+
+    # Build a human-readable reasoning string from raw feature scores.
+    def _reasoning(row: pd.Series) -> str:
+        ret = row.get("retrieval_score", 0.0)
+        evl = row.get("evaluation_score", 0.0)
+        rec = row.get("recommendation_score", 0.0)
+        prod = row.get("production_score", 0.0)
+        spec = row.get("specificity_score", 0.0)
+        ev_sup = row.get("evidence_support_score", 0.0)
+        parts = [f"retrieval={ret:.0f}"]
+        if evl > 0:
+            parts.append(f"eval={evl:.0f}")
+        if rec > 0:
+            parts.append(f"rec={rec:.0f}")
+        parts.append(f"prod={prod:.0f}")
+        parts.append(f"spec={spec:.0f}")
+        if ev_sup > 0:
+            parts.append(f"evidence={ev_sup:.0f}")
+        if row.get("consulting_only_flag", False):
+            parts.append("consulting_only_penalty")
+        return "; ".join(parts)
+
+    # Merge raw feature scores back for reasoning column
+    raw_feats = df[[
+        "candidate_id", "retrieval_score", "evaluation_score",
+        "recommendation_score", "production_score",
+        "specificity_score", "evidence_support_score",
+        "consulting_only_flag",
+    ]]
+    top100_with_feats = top100.merge(raw_feats, on="candidate_id", how="left")
+    top100_with_feats["reasoning"] = top100_with_feats.apply(_reasoning, axis=1)
+
+    top100_submission = top100_with_feats[["candidate_id", "rank", "final_score", "reasoning"]].rename(
+        columns={"final_score": "score"}
+    )
+    top100_submission.to_csv(SUBMISSION_CSV, index=False)
+    print(f"      Wrote {SUBMISSION_CSV} ({len(top100_submission)} candidates)")
+
+    # --- Console: Top 50 ---
+    print("\n" + "=" * 65)
+    print("TOP 50 CANDIDATES")
+    print("=" * 65)
+    display_cols = [
+        "candidate_id", "rank",
+        "relevance_score", "credibility_score",
+        "negative_signal_score", "final_score",
+    ]
+    top50 = kept[kept["rank"] <= 50][display_cols].copy()
+    # Round for display
+    for col in ["relevance_score", "credibility_score", "negative_signal_score", "final_score"]:
+        top50[col] = top50[col].round(4)
+    pd.set_option("display.max_rows", 60)
+    pd.set_option("display.width", 140)
+    pd.set_option("display.float_format", "{:.4f}".format)
+    print(top50.to_string(index=False))
+
+    # --- Diagnostics ---
+    _write_diagnostics(df, kept, rejected, top100)
+    print(f"\n      Wrote {DIAGNOSTICS_MD}")
+    print("\nDone.")
+
+
+# ===========================================================================
+# Diagnostics
+# ===========================================================================
+
+def _pct(series: pd.Series, q: float) -> str:
+    return f"{series.quantile(q):.3f}"
+
+
+def _write_diagnostics(
+    original: pd.DataFrame,
+    kept: pd.DataFrame,
+    rejected: pd.DataFrame,
+    top100: pd.DataFrame,
+) -> None:
+    lines: list[str] = []
+
+    def h(text: str, level: int = 2) -> None:
+        lines.append(f"\n{'#' * level} {text}\n")
+
+    def table(df_: pd.DataFrame) -> None:
+        lines.append(df_.to_markdown(index=False))
+        lines.append("")
+
+    lines.append("# Ranking Diagnostics\n")
+    lines.append(f"**Total candidates**: {len(original):,}  ")
+    lines.append(f"**Hard rejected**: {len(rejected):,}  ")
+    lines.append(f"**Ranked**: {len(kept):,}  ")
+    lines.append("")
+
+    # --- Score distributions ---
+    h("Score Distributions (full dataset before hard reject)")
+
+    dist_rows = []
+    for col in [
+        "retrieval_score", "recommendation_score", "evaluation_score",
+        "production_score", "specificity_score", "evidence_support_score",
+        "contradiction_score", "behavior_score",
+        "consulting_ratio", "title_progression_score",
+        "average_tenure_months", "total_months_experience",
+    ]:
+        s = original[col]
+        dist_rows.append({
+            "feature": col,
+            "mean": f"{s.mean():.2f}",
+            "std": f"{s.std():.2f}",
+            "min": f"{s.min():.2f}",
+            "p25": f"{s.quantile(0.25):.2f}",
+            "p50": f"{s.quantile(0.50):.2f}",
+            "p75": f"{s.quantile(0.75):.2f}",
+            "p95": f"{s.quantile(0.95):.2f}",
+            "max": f"{s.max():.2f}",
+            "nonzero": f"{(s > 0).sum():,}",
+        })
+    table(pd.DataFrame(dist_rows))
+
+    # --- Penalty distributions ---
+    h("Penalty Distributions (post hard-reject)")
+
+    if "negative_signal_score" in kept.columns:
+        pen = kept["negative_signal_score"]
+        pen_rows = [
+            {"metric": "candidates with any penalty", "value": str((pen > 0).sum())},
+            {"metric": "consulting_only_flag=True", "value": str(kept["consulting_only_flag"].sum())},
+            {"metric": "consulting_ratio > 0.60", "value": str(((~kept["consulting_only_flag"]) & (kept["consulting_ratio"] > 0.60)).sum())},
+            {"metric": "title_chaser detected", "value": str(((kept["title_progression_score"] > 75) & (kept["short_tenure_count"] >= 2) & (kept["job_count"] >= 4)).sum())},
+            {"metric": "behavior_score below p25", "value": str((kept["behavior_score"] < kept["behavior_score"].quantile(0.25)).sum())},
+            {"metric": "mean penalty", "value": f"{pen.mean():.4f}"},
+            {"metric": "max penalty", "value": f"{pen.max():.4f}"},
+        ]
+        table(pd.DataFrame(pen_rows))
+
+    # --- Hard reject breakdown ---
+    h("Hard Rejected Candidates")
+
+    if len(rejected) == 0:
+        lines.append("No candidates were hard rejected.\n")
+    else:
+        lines.append(f"**Count**: {len(rejected):,}\n")
+        reject_show = rejected[["candidate_id", "reject_reason", "contradiction_score",
+                                  "consulting_only_flag"]].head(30)
+        table(reject_show)
+
+    # --- Top 20 by relevance ---
+    h("Top 20 Candidates by Relevance Score")
+
+    top20_rel = kept.nlargest(20, "relevance_score")[
+        ["candidate_id", "relevance_score", "credibility_score",
+         "negative_signal_score", "final_score", "rank",
+         "retrieval_score", "evaluation_score", "recommendation_score"]
+    ].copy()
+    for col in ["relevance_score", "credibility_score", "negative_signal_score", "final_score"]:
+        top20_rel[col] = top20_rel[col].round(4)
+    table(top20_rel)
+
+    # --- Top 20 by final score ---
+    h("Top 20 Candidates by Final Score")
+
+    top20_final = kept.nlargest(20, "final_score")[
+        ["candidate_id", "final_score", "relevance_score", "credibility_score",
+         "negative_signal_score", "rank",
+         "retrieval_score", "evaluation_score", "recommendation_score",
+         "production_score", "specificity_score", "evidence_support_score"]
+    ].copy()
+    for col in ["final_score", "relevance_score", "credibility_score", "negative_signal_score"]:
+        top20_final[col] = top20_final[col].round(4)
+    table(top20_final)
+
+    # --- Top 100 summary ---
+    h("Top 100 Candidates — Score Summary")
+
+    if len(top100) > 0:
+        t100_scores = top100[["relevance_score", "credibility_score",
+                               "negative_signal_score", "final_score"]]
+        summary_rows = []
+        for col in t100_scores.columns:
+            s = t100_scores[col]
+            summary_rows.append({
+                "score": col,
+                "min": f"{s.min():.4f}",
+                "mean": f"{s.mean():.4f}",
+                "max": f"{s.max():.4f}",
+            })
+        table(pd.DataFrame(summary_rows))
+
+        # Consulting flag presence in top 100
+        consulting_in_top100 = top100["consulting_only_flag"].sum()
+        lines.append(f"**consulting_only_flag=True in Top 100**: {consulting_in_top100}\n")
+        eval_in_top100 = (top100["evaluation_score"] > 0).sum()
+        lines.append(f"**Candidates with evaluation_score > 0 in Top 100**: {eval_in_top100}\n")
+
+    # --- Stage weight documentation ---
+    h("Scoring Formula Documentation")
+
+    lines.append("```\n")
+    lines.append("relevance_score  = 0.60 * retrieval_score/100\n")
+    lines.append("                 + 0.25 * evaluation_score/100   [+ 0.03-0.06 eval bonus]\n")
+    lines.append("                 + 0.15 * recommendation_score/100\n\n")
+    lines.append("credibility_score = 0.40 * production_score/100\n")
+    lines.append("                  + 0.35 * specificity_score/100\n")
+    lines.append("                  + 0.25 * evidence_support_score/100\n")
+    lines.append("                  [- 0.05 unsupported-claims penalty if evidence_support 0<x<50]\n\n")
+    lines.append("base_score = relevance * 0.65 + (relevance * credibility) * 0.35\n\n")
+    lines.append("penalty    = consulting_only          * 0.30  [if consulting_only_flag]\n")
+    lines.append("           + heavy_consulting         * 0.10  [if consulting_ratio > 0.60 and not only]\n")
+    lines.append("           + title_chaser             * 0.06  [if progression>75 + short>=2 + jobs>=4]\n")
+    lines.append("           + low_behavior             * 0.02  [if behavior_score < p25]\n")
+    lines.append("           [capped at 0.35]\n\n")
+    lines.append("final_score = (base_score - penalty).clip(0, 1)\n")
+    lines.append("```\n")
+
+    DIAGNOSTICS_MD.write_text("\n".join(lines), encoding="utf-8")
+
+
+# ===========================================================================
+# Entry point
+# ===========================================================================
+
+if __name__ == "__main__":
+    run_pipeline()

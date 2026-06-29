@@ -1,0 +1,237 @@
+Folder PATH listing for volume Windows-SSD
+Volume serial number is 000000BC 9C41:E12A
+C:.
+|   ..gitignore
+|   ALIAS_COVERAGE.csv
+|   ALPHA_IMPACT_VERIFICATION.md
+|   alpha_movers.json
+|   audit_analysis.py
+|   audit_contribution.py
+|   audit_correlation.py
+|   audit_coverage.py
+|   audit_duplicates.py
+|   audit_education.py
+|   audit_evidence.py
+|   audit_fp.py
+|   audit_precision.py
+|   audit_recall.py
+|   audit_synthetic.py
+|   audit_top100.py
+|   bug_reproduction.py
+|   bug_reproduction_results.json
+|   calibrate_constants.py
+|   CALIBRATION_OUTPUT_TEMP.md
+|   CALIBRATION_REPORT.md
+|   candidates.jsonl
+|   candidate_features.parquet
+|   candidate_schema.json
+|   compare_runs.py
+|   CONCEPT_REGISTRY.md
+|   CONCEPT_REGISTRY_SCHEMA.md
+|   CONCEPT_REGISTRY_UPDATE.md
+|   config.json
+|   CONTRIBUTION_MATRIX.csv
+|   COUNTERFACTUAL_RESULTS.csv
+|   DATE_PARSER_TESTS.md
+|   DATE_ROBUSTNESS_PATCH.md
+|   EDUCATION_CHRONOLOGY_AUDIT.md
+|   EVALUATION_BONUS_ROOT_CAUSE.md
+|   extract_candidate_features.py
+|   extract_top10_contra.py
+|   FALSE_NEGATIVE_REPORT.csv
+|   FALSE_POSITIVE_REPORT.csv
+|   family_concentration_audit.py
+|   FAMILY_CONCENTRATION_REPORT.md
+|   FAMILY_DIVERSITY_AUDIT.md
+|   FEATURE_CONTEXT_ANALYSIS.csv
+|   FEATURE_CONTRIBUTION.csv
+|   FEATURE_EXTRACTION_AUDIT.md
+|   FEATURE_EXTRACTION_EVIDENCE.md
+|   FEATURE_EXTRACTION_IMPLEMENTATION.md
+|   FEATURE_OVERLAP_REPORT.csv
+|   FEATURE_PIPELINE.md
+|   FEATURE_PRECISION_AUDIT.md
+|   FINAL_RANKING_DESIGN.md
+|   FINAL_ROBUSTNESS_AUDIT.md
+|   final_submission.csv
+|   final_validation.py
+|   final_validation_report.md
+|   fix.py
+|   fix_audit.py
+|   generate_and_run_variants.py
+|   generate_gold_pairs.py
+|   gen_alpha_report.py
+|   gold_pairs.yaml
+|   GOLD_PAIR_VALIDATION.md
+|   HONEYPOT_ANALYSIS.md
+|   inspect_features.py
+|   inspect_schema.py
+|   inspect_top20.py
+|   JD_ANALYSIS.md
+|   job_description.docx
+|   project_tree.txt
+|   ranked_candidates.parquet
+|   ranked_candidates_v1.parquet
+|   ranked_candidates_v2.parquet
+|   ranked_candidates_v3.parquet
+|   ranking_diagnostics.md
+|   rank_candidates.py
+|   rank_candidates_final.py
+|   rank_candidates_v1.py
+|   rank_candidates_v2.py
+|   rank_candidates_v3.bak
+|   rank_candidates_v3.py
+|   rca_data.json
+|   README.docx
+|   RECALL_AUDIT.csv
+|   redrob_signals_doc.docx
+|   refactor.py
+|   refactor_extractor.py
+|   REGEX_SHADOWING_REPORT.md
+|   REGRESSION_REPORT.md
+|   rejection_diagnostics.md
+|   rejection_diagnostics.py
+|   render_top10_md.py
+|   requirements.txt
+|   RETRIEVAL_SCORE_DECOMPOSITION.md
+|   run_audits.py
+|   run_rca.py
+|   sample_candidates.json
+|   sample_candidates_label_extraction.yaml
+|   sample_submission.csv
+|   SPECIFICATION_CONFORMANCE_AUDIT.md
+|   spec_audit.py
+|   statistical_audit.md
+|   statistical_audit.py
+|   submission_metadata_template.yaml
+|   submission_spec.docx
+|   synthetic.jsonl
+|   synthetic_features.parquet
+|   synthetic_ranked.parquet
+|   SYNTHETIC_STRESS_RESULTS.csv
+|   test_alpha.py
+|   test_date_parser.py
+|   test_feature_extraction.py
+|   test_impact.py
+|   top100_changes.txt
+|   TOP100_FAMILY_PROFILE.csv
+|   TOP100_QUALITY_AUDIT.md
+|   top10_contra.json
+|   top10_contradiction_rejected.md
+|   validate_ranking_system.py
+|   validate_submission.py
+|   validation_output.txt
+|   VERIFIED_BUG_REPORT.md
+|   verify_alpha.py
+|   
++---.agents
++---runs
+|   +---v001
+|   |       ranked_candidates.parquet
+|   |       
+|   +---v002
+|   |       borderline_candidates.json
+|   |       correlation_matrix.csv
+|   |       feature_entropy.csv
+|   |       protected_elite.json
+|   |       protected_rejects.json
+|   |       ranked_candidates.parquet
+|   |       ranking_diff.csv
+|   |       run_metadata.json
+|   |       sensitivity_analysis.csv
+|   |       threshold_analysis.csv
+|   |       
+|   +---v003
+|   |       borderline_candidates.json
+|   |       correlation_matrix.csv
+|   |       feature_entropy.csv
+|   |       protected_elite.json
+|   |       protected_rejects.json
+|   |       ranked_candidates.parquet
+|   |       ranking_diff.csv
+|   |       run_metadata.json
+|   |       sensitivity_analysis.csv
+|   |       threshold_analysis.csv
+|   |       validation_report.md
+|   |       
+|   +---v004
+|   |       borderline_candidates.json
+|   |       correlation_matrix.csv
+|   |       feature_entropy.csv
+|   |       protected_elite.json
+|   |       protected_rejects.json
+|   |       ranked_candidates.parquet
+|   |       ranking_diff.csv
+|   |       run_metadata.json
+|   |       sensitivity_analysis.csv
+|   |       threshold_analysis.csv
+|   |       validation_report.md
+|   |       
+|   +---v005
+|   |       borderline_candidates.json
+|   |       correlation_matrix.csv
+|   |       feature_entropy.csv
+|   |       protected_elite.json
+|   |       protected_rejects.json
+|   |       ranked_candidates.parquet
+|   |       ranking_diff.csv
+|   |       run_metadata.json
+|   |       sensitivity_analysis.csv
+|   |       threshold_analysis.csv
+|   |       validation_report.md
+|   |       
+|   +---v006
+|   |       borderline_candidates.json
+|   |       correlation_matrix.csv
+|   |       feature_entropy.csv
+|   |       protected_elite.json
+|   |       protected_rejects.json
+|   |       ranked_candidates.parquet
+|   |       ranking_diff.csv
+|   |       run_metadata.json
+|   |       sensitivity_analysis.csv
+|   |       threshold_analysis.csv
+|   |       validation_report.md
+|   |       
+|   +---v007
+|   |       borderline_candidates.json
+|   |       correlation_matrix.csv
+|   |       feature_entropy.csv
+|   |       protected_elite.json
+|   |       protected_rejects.json
+|   |       ranked_candidates.parquet
+|   |       ranking_diff.csv
+|   |       run_metadata.json
+|   |       sensitivity_analysis.csv
+|   |       threshold_analysis.csv
+|   |       validation_report.md
+|   |       
+|   \---v008
+|           borderline_candidates.json
+|           correlation_matrix.csv
+|           feature_entropy.csv
+|           protected_elite.json
+|           protected_rejects.json
+|           ranked_candidates.parquet
+|           ranking_diff.csv
+|           run_metadata.json
+|           sensitivity_analysis.csv
+|           threshold_analysis.csv
+|           validation_report.md
+|           
+\---__pycache__
+        audit_synthetic.cpython-311.pyc
+        audit_top100.cpython-311.pyc
+        extract_candidate_features.cpython-311.pyc
+        extract_candidate_features.cpython-311.pyc.1937475368784
+        extract_candidate_features.cpython-311.pyc.2257575069984
+        extract_candidate_features.cpython-311.pyc.2356248889632
+        extract_candidate_features.cpython-311.pyc.2812746516768
+        family_concentration_audit.cpython-311.pyc
+        rank_candidates_final.cpython-311.pyc
+        rank_candidates_v3.cpython-311.pyc
+        run_rca.cpython-311.pyc
+        test_feature_extraction.cpython-311.pyc.2257575071040
+        test_feature_extraction.cpython-311.pyc.2356248890688
+        test_feature_extraction.cpython-311.pyc.2812746518000
+        

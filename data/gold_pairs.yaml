@@ -1,0 +1,650 @@
+- category: 1. Production Search Engineer vs Prototype Builder
+  name: Elite Production Search vs Prototype Search
+  cand_a: retrieval=80, production=90, specificity=85
+  cand_b: retrieval=80, production=10, specificity=15
+  winner: Candidate A
+  confidence: High
+  reasoning: Both have identical keyword relevance, but A operated systems at scale.
+  jd: production systems, operational ownership
+  feat_should: production_score, credibility_score
+  feat_shouldnt: retrieval_score
+  failure: Linear addition lets B stay close.
+- category: 1. Production Search Engineer vs Prototype Builder
+  name: Moderate Prod Search vs Max Keyword Prototype
+  cand_a: retrieval=60, production=70
+  cand_b: retrieval=95, production=5
+  winner: Candidate A
+  confidence: High
+  reasoning: 60% relevance with production beats 95% keyword match who never deployed.
+  jd: production systems
+  feat_should: production_score
+  feat_shouldnt: raw retrieval
+  failure: System defaults to retrieval.
+- category: 1. Production Search Engineer vs Prototype Builder
+  name: Production RecSys vs Prototype Hybrid
+  cand_a: recommendation=75, production=80
+  cand_b: retrieval=70, recommendation=70, production=10
+  winner: Candidate A
+  confidence: High
+  reasoning: Real production in one domain beats toy experience in multiple.
+  jd: production ML infrastructure
+  feat_should: production_score
+  feat_shouldnt: breadth bonuses
+  failure: Breadth bonus overpowers credibility.
+- category: 2. Recommendation Engineer vs Search Engineer
+  name: Elite Rec vs Elite Search
+  cand_a: recommendation=90, retrieval=10
+  cand_b: retrieval=90, recommendation=10
+  winner: Tie
+  confidence: High
+  reasoning: Search and Recommendation are parallel domains.
+  jd: Recommendation Systems, Search Systems
+  feat_should: max(retrieval, recommendation)
+  feat_shouldnt: arbitrary base weights
+  failure: System uses fixed 0.60 ret / 0.15 rec weight.
+- category: 2. Recommendation Engineer vs Search Engineer
+  name: Good Rec vs Mediocre Search
+  cand_a: recommendation=70, retrieval=0
+  cand_b: retrieval=40, recommendation=0
+  winner: Candidate A
+  confidence: High
+  reasoning: Strong RecSys strictly beats weak Search.
+  jd: Recommendation Systems
+  feat_should: recommendation_score
+  feat_shouldnt: retrieval defaults
+  failure: System defaults to retrieval.
+- category: 2. Recommendation Engineer vs Search Engineer
+  name: Rec-Leaning vs Search-Leaning
+  cand_a: recommendation=80, retrieval=50
+  cand_b: retrieval=80, recommendation=50
+  winner: Tie
+  confidence: High
+  reasoning: Both have strong primary domains.
+  jd: Search, Recommendation
+  feat_should: domain breadth
+  feat_shouldnt: domain bias
+  failure: Linear weighting punishes Rec-Leaning.
+- category: 2. Recommendation Engineer vs Search Engineer
+  name: Pure Rec vs Broad Search Prototype
+  cand_a: recommendation=90, production=80
+  cand_b: retrieval=60, recommendation=40, production=20
+  winner: Candidate A
+  confidence: High
+  reasoning: Elite Rec specialist beats broad prototype generalist.
+  jd: production systems
+  feat_should: credibility_score
+  feat_shouldnt: breadth bonus
+  failure: Failing to dampen relevance by credibility.
+- category: 3. Evidence-backed profile vs Keyword-stuffed profile
+  name: Solid Evidence vs Max Keyword Stuffing
+  cand_a: retrieval=65, evidence_support=80, production=75
+  cand_b: retrieval=99, evidence_support=5, production=10
+  winner: Candidate A
+  confidence: High
+  reasoning: Keyword stuffers fail evidence checks.
+  jd: evidence-backed claims
+  feat_should: evidence_support_score
+  feat_shouldnt: retrieval_score
+  failure: Keyword density allows B to slip into Top 100.
+- category: 3. Evidence-backed profile vs Keyword-stuffed profile
+  name: Moderate Evidence vs Zero Evidence
+  cand_a: recommendation=50, evidence_support=50
+  cand_b: recommendation=50, evidence_support=0
+  winner: Candidate A
+  confidence: High
+  reasoning: Candidate A attempted to back up claims.
+  jd: evidence-backed claims
+  feat_should: evidence_support_score
+  feat_shouldnt: recommendation_score
+  failure: Evidence score is ignored.
+- category: 3. Evidence-backed profile vs Keyword-stuffed profile
+  name: High Spec vs High Evidence Mapping
+  cand_a: specificity=80, evidence_support=20
+  cand_b: specificity=20, evidence_support=80
+  winner: Tie
+  confidence: Medium
+  reasoning: Both show credibility in different ways.
+  jd: operational ownership
+  feat_should: specificity_score, evidence_support
+  feat_shouldnt: N/A
+  failure: System relies entirely on one credibility feature.
+- category: 3. Evidence-backed profile vs Keyword-stuffed profile
+  name: High Keyword Density vs Moderate Balanced
+  cand_a: retrieval=95, credibility=10
+  cand_b: retrieval=60, credibility=60
+  winner: Candidate B
+  confidence: High
+  reasoning: Moderate relevance with strong credibility beats unbacked keyword stuffing.
+  jd: evidence-backed claims
+  feat_should: credibility_score
+  feat_shouldnt: retrieval_score
+  failure: Raw multiplication is not balanced.
+- category: 4. Strong production metrics vs Strong skill list
+  name: Metrics Operator vs Skill Lister
+  cand_a: retrieval=50, specificity=90
+  cand_b: retrieval=85, specificity=10
+  winner: Candidate A
+  confidence: High
+  reasoning: Specificity proves they built it.
+  jd: operational ownership
+  feat_should: specificity_score
+  feat_shouldnt: retrieval_score
+  failure: Relevance dominates credibility.
+- category: 4. Strong production metrics vs Strong skill list
+  name: Latency/Scale Expert vs Concept Lister
+  cand_a: recommendation=60, specificity=85, production=80
+  cand_b: recommendation=85, specificity=15, production=20
+  winner: Candidate A
+  confidence: High
+  reasoning: Real engineers talk about scale.
+  jd: production systems
+  feat_should: specificity_score
+  feat_shouldnt: recommendation
+  failure: Failure to gate relevance.
+- category: 4. Strong production metrics vs Strong skill list
+  name: Avg Rel + Elite Metrics vs Elite Rel + Zero Metrics
+  cand_a: retrieval=50, specificity=95
+  cand_b: retrieval=95, specificity=5
+  winner: Candidate A
+  confidence: High
+  reasoning: A is proven. B is likely synthetic.
+  jd: production systems
+  feat_should: specificity_score
+  feat_shouldnt: raw relevance
+  failure: System loves perfect relevance scores.
+- category: 4. Strong production metrics vs Strong skill list
+  name: Production Metric Heavy vs BM25 Keyword Lister
+  cand_a: retrieval=40, specificity=90
+  cand_b: retrieval=70, specificity=10
+  winner: Candidate A
+  confidence: High
+  reasoning: Metrics show reality. BM25 is just a keyword.
+  jd: evidence-backed claims
+  feat_should: credibility
+  feat_shouldnt: retrieval
+  failure: Linear scoring.
+- category: 5. Search engineer vs Generic LLM engineer
+  name: Pure Search vs Generic GenAI
+  cand_a: retrieval=80, production=70
+  cand_b: retrieval=20, evaluation=10, production=70
+  winner: Candidate A
+  confidence: High
+  reasoning: JD explicitly dislikes generic GenAI.
+  jd: Search Systems
+  feat_should: retrieval_score
+  feat_shouldnt: production_score
+  failure: B gets too much credit for AI.
+- category: 5. Search engineer vs Generic LLM engineer
+  name: Hybrid Search/Rec vs LLM Wrapper Builder
+  cand_a: retrieval=60, recommendation=50
+  cand_b: retrieval=15, evidence_support=90
+  winner: Candidate A
+  confidence: High
+  reasoning: LLM wrapper lacks core domain.
+  jd: Retrieval, Recommendation
+  feat_should: retrieval_score
+  feat_shouldnt: evidence_support
+  failure: Evidence boosts irrelevant candidates.
+- category: 5. Search engineer vs Generic LLM engineer
+  name: Search Eval Expert vs LLM Prompt Engineer
+  cand_a: evaluation=70, retrieval=50
+  cand_b: evaluation=10, retrieval=10, production=50
+  winner: Candidate A
+  confidence: High
+  reasoning: Evaluation in retrieval is highly prized.
+  jd: Evaluation Frameworks
+  feat_should: evaluation_score
+  feat_shouldnt: production_score
+  failure: Failure to multiply evaluation by relevance.
+- category: 6. Product company vs Consulting-only career
+  name: Product Search vs Consulting Search
+  cand_a: retrieval=70, consulting_only_flag=False, production=70
+  cand_b: retrieval=70, consulting_only_flag=True, production=70
+  winner: Candidate A
+  confidence: High
+  reasoning: JD explicitly dislikes consulting-only.
+  jd: consulting-only careers (dislike)
+  feat_should: consulting_only_flag
+  feat_shouldnt: retrieval
+  failure: System ignores penalty.
+- category: 6. Product company vs Consulting-only career
+  name: Product RecSys vs Heavy Consulting RecSys
+  cand_a: recommendation=70, consulting_ratio=0.1
+  cand_b: recommendation=70, consulting_ratio=0.8
+  winner: Candidate A
+  confidence: High
+  reasoning: Heavy consulting is a soft negative.
+  jd: operational ownership
+  feat_should: consulting_ratio
+  feat_shouldnt: recommendation
+  failure: Consulting ratio is not penalized.
+- category: 6. Product company vs Consulting-only career
+  name: Weak Product vs Elite Consulting
+  cand_a: retrieval=30, production=30, consulting_only=False
+  cand_b: retrieval=90, production=80, consulting_only=True
+  winner: Candidate B
+  confidence: Medium
+  reasoning: Consulting is a negative, not a hard reject.
+  jd: Search Systems vs consulting
+  feat_should: retrieval, production
+  feat_shouldnt: consulting_only_flag
+  failure: Consulting flag acts as a fatal 0 multiplier.
+- category: 6. Product company vs Consulting-only career
+  name: Product Matching vs Consulting Matching
+  cand_a: retrieval=60, recommendation=60, consulting=False
+  cand_b: retrieval=60, recommendation=60, consulting=True
+  winner: Candidate A
+  confidence: High
+  reasoning: Product experience wins ties.
+  jd: production systems
+  feat_should: consulting_only_flag
+  feat_shouldnt: relevance
+  failure: No penalty applied.
+- category: 7. Consistent timeline vs Contradictory timeline
+  name: Normal Career vs Time Traveler
+  cand_a: retrieval=60, contradiction_score=0
+  cand_b: retrieval=99, contradiction_score=50
+  winner: Candidate A
+  confidence: High
+  reasoning: Contradiction > 30 is a hard reject.
+  jd: evidence-backed claims
+  feat_should: contradiction_score
+  feat_shouldnt: retrieval
+  failure: Contradiction is ignored.
+- category: 7. Consistent timeline vs Contradictory timeline
+  name: Normal RecSys vs Slight Overlap
+  cand_a: recommendation=70, contradiction_score=0
+  cand_b: recommendation=75, contradiction_score=10
+  winner: Candidate B
+  confidence: Medium
+  reasoning: Minor overlaps (10) are normal in tech.
+  jd: Recommendation Systems
+  feat_should: recommendation_score
+  feat_shouldnt: contradiction_score
+  failure: System aggressively penalizes minor date overlaps.
+- category: 7. Consistent timeline vs Contradictory timeline
+  name: Consistent Junior vs Contradictory Senior
+  cand_a: retrieval=40, contradiction_score=0
+  cand_b: retrieval=80, contradiction_score=40
+  winner: Candidate A
+  confidence: High
+  reasoning: Score 40 contradiction means multiple impossible timelines. Reject.
+  jd: keyword stuffing (dislike)
+  feat_should: contradiction_score
+  feat_shouldnt: retrieval
+  failure: Hard reject gate is missing.
+- category: 7. Consistent timeline vs Contradictory timeline
+  name: Zero Contradiction Search vs High Contradiction Prototype
+  cand_a: retrieval=70, contradiction=0
+  cand_b: retrieval=80, contradiction=35
+  winner: Candidate A
+  confidence: High
+  reasoning: Hard reject threshold.
+  jd: evidence-backed claims
+  feat_should: contradiction_score
+  feat_shouldnt: retrieval
+  failure: No hard reject.
+- category: 8. Hybrid Retrieval engineer vs Pure BM25 engineer
+  name: Vector+BM25 vs Pure BM25
+  cand_a: retrieval=85, specificity=80
+  cand_b: retrieval=60, specificity=60
+  winner: Candidate A
+  confidence: High
+  reasoning: Hybrid retrieval yields higher scores.
+  jd: Hybrid Retrieval
+  feat_should: retrieval_score
+  feat_shouldnt: N/A
+  failure: Score saturation prevents A from pulling ahead.
+- category: 8. Hybrid Retrieval engineer vs Pure BM25 engineer
+  name: Hybrid Rec+Vector vs Standard IR
+  cand_a: retrieval=70, recommendation=60
+  cand_b: retrieval=70, recommendation=10
+  winner: Candidate A
+  confidence: High
+  reasoning: Breadth bonus applies.
+  jd: Hybrid Retrieval
+  feat_should: recommendation_score
+  feat_shouldnt: N/A
+  failure: No breadth bonus.
+- category: 9. Evaluation expert with production vs Evaluation expert without production
+  name: Eval + Prod vs Pure Eval (Data Scientist)
+  cand_a: evaluation=80, retrieval=60, production=70
+  cand_b: evaluation=90, retrieval=10, production=10
+  winner: Candidate A
+  confidence: High
+  reasoning: Eval without a system is data science.
+  jd: Evaluation Frameworks
+  feat_should: production_score
+  feat_shouldnt: evaluation_score
+  failure: Eval is treated as additive.
+- category: 9. Evaluation expert with production vs Evaluation expert without production
+  name: Search Builder vs Pure Eval Analyst
+  cand_a: retrieval=80, evaluation=0
+  cand_b: retrieval=0, evaluation=90
+  winner: Candidate A
+  confidence: High
+  reasoning: Eval is a bonus multiplier on relevance.
+  jd: Search Systems
+  feat_should: retrieval
+  feat_shouldnt: evaluation
+  failure: Eval creates relevance.
+- category: 9. Evaluation expert with production vs Evaluation expert without production
+  name: RecSys Eval vs Eval Generalist
+  cand_a: recommendation=70, evaluation=60
+  cand_b: retrieval=10, recommendation=10, evaluation=80
+  winner: Candidate A
+  confidence: High
+  reasoning: Domain relevance is required for eval to amplify.
+  jd: Evaluation
+  feat_should: recommendation
+  feat_shouldnt: evaluation
+  failure: Additive eval logic.
+- category: 9. Evaluation expert with production vs Evaluation expert without production
+  name: High Eval/Low Cred vs Low Eval/High Cred
+  cand_a: evaluation=80, credibility=20
+  cand_b: evaluation=20, credibility=80
+  winner: Candidate B
+  confidence: Medium
+  reasoning: Credibility validates. Eval without cred is suspect.
+  jd: production systems
+  feat_should: credibility
+  feat_shouldnt: evaluation
+  failure: Eval overwhelms credibility.
+- category: 10. High credibility vs High keyword density
+  name: Proven Operator vs Resume Optimizer
+  cand_a: retrieval=60, production=80, specificity=80
+  cand_b: retrieval=95, production=10, specificity=10
+  winner: Candidate A
+  confidence: High
+  reasoning: A is the exact target persona.
+  jd: operational ownership
+  feat_should: credibility_score
+  feat_shouldnt: retrieval
+  failure: Linear sum allows B to win.
+- category: 10. High credibility vs High keyword density
+  name: Solid Backend Search vs Search Keyword Spammer
+  cand_a: retrieval=55, credibility=85
+  cand_b: retrieval=100, credibility=5
+  winner: Candidate A
+  confidence: High
+  reasoning: 100 retrieval with 5 credibility is mathematically impossible for a real
+    human.
+  jd: evidence-backed claims
+  feat_should: credibility
+  feat_shouldnt: retrieval
+  failure: Lack of multiplicative dampener.
+- category: 10. High credibility vs High keyword density
+  name: RecSys Operator vs RecSys Spammer
+  cand_a: recommendation=60, credibility=75
+  cand_b: recommendation=95, credibility=15
+  winner: Candidate A
+  confidence: High
+  reasoning: Credibility must gate the domain relevance.
+  jd: production
+  feat_should: credibility
+  feat_shouldnt: recommendation
+  failure: Domain bias or linear logic.
+- category: 11. Broad relevance engineer vs Single-domain specialist
+  name: 100/100 Hybrid vs 100/0 Specialist
+  cand_a: retrieval=90, recommendation=90, production=80
+  cand_b: retrieval=90, recommendation=0, production=80
+  winner: Candidate A
+  confidence: High
+  reasoning: A has mastered two relevance domains.
+  jd: Search, Recommendation
+  feat_should: domain breadth bonus
+  feat_shouldnt: pure max()
+  failure: System uses pure max().
+- category: 11. Broad relevance engineer vs Single-domain specialist
+  name: 80/0 Specialist vs 50/50 Generalist
+  cand_a: retrieval=80, recommendation=0
+  cand_b: retrieval=50, recommendation=50
+  winner: Candidate A
+  confidence: High
+  reasoning: Deep expertise beats mediocre knowledge in both.
+  jd: Search Systems
+  feat_should: max(retrieval, recommendation)
+  feat_shouldnt: domain breadth bonus
+  failure: Breadth bonus is too large.
+- category: 11. Broad relevance engineer vs Single-domain specialist
+  name: 70/70 Hybrid vs 80/0 Specialist
+  cand_a: retrieval=70, recommendation=70
+  cand_b: retrieval=80, recommendation=0
+  winner: Candidate A
+  confidence: Medium
+  reasoning: A 70/70 hybrid is generally more valuable than an 80/0 specialist.
+  jd: Hybrid Retrieval
+  feat_should: breadth bonus
+  feat_shouldnt: pure max
+  failure: No breadth bonus.
+- category: 12. Recent relevance work vs Old relevance work
+  name: High Total/High Prod vs High Total/Low Prod
+  cand_a: experience=120, production=80
+  cand_b: experience=120, production=20
+  winner: Candidate A
+  confidence: High
+  reasoning: Low production implies old/stale hands-on work.
+  jd: Production ML
+  feat_should: production
+  feat_shouldnt: experience
+  failure: Experience dominates.
+- category: 12. Recent relevance work vs Old relevance work
+  name: Moderate Tenure/High Spec vs Long Tenure/Low Spec
+  cand_a: tenure=24, specificity=85
+  cand_b: tenure=84, specificity=30
+  winner: Candidate A
+  confidence: High
+  reasoning: Metrics show recent/current impact.
+  jd: evidence-backed claims
+  feat_should: specificity
+  feat_shouldnt: tenure
+  failure: Tenure bias.
+- category: 13. Production ownership vs Research-only profile
+  name: Production Engineer vs Research Scientist
+  cand_a: retrieval=70, production=80, specificity=70
+  cand_b: retrieval=80, production=10, specificity=40
+  winner: Candidate A
+  confidence: High
+  reasoning: JD wants production ML infrastructure.
+  jd: Production ML Infrastructure
+  feat_should: production
+  feat_shouldnt: retrieval
+  failure: System fails to validate relevance.
+- category: 13. Production ownership vs Research-only profile
+  name: Applied Scientist vs Pure Academic
+  cand_a: recommendation=80, production=60
+  cand_b: recommendation=90, production=5
+  winner: Candidate A
+  confidence: High
+  reasoning: Applied scientist built it.
+  jd: Production ML
+  feat_should: production
+  feat_shouldnt: recommendation
+  failure: Raw domain score wins.
+- category: 14. Infrastructure engineer vs Model fine-tuning engineer
+  name: Search Infra vs LLM Fine-Tuner
+  cand_a: retrieval=70, production=80
+  cand_b: retrieval=20, production=80
+  winner: Candidate A
+  confidence: High
+  reasoning: Infra for search beats generic ML finetuning.
+  jd: Retrieval Infrastructure
+  feat_should: retrieval
+  feat_shouldnt: production
+  failure: Production overpowers domain.
+- category: 14. Infrastructure engineer vs Model fine-tuning engineer
+  name: RecSys Infra vs General ML Ops
+  cand_a: recommendation=75, production=85
+  cand_b: recommendation=15, production=95
+  winner: Candidate A
+  confidence: High
+  reasoning: Domain relevance is Tier 1.
+  jd: Recommendation Systems
+  feat_should: recommendation
+  feat_shouldnt: production
+  failure: Production masks lack of domain.
+- category: 15. Behavioral twin where only evidence quality differs
+  name: Original Profile vs Generative Copy
+  cand_a: retrieval=80, specificity=85, evidence=80
+  cand_b: retrieval=80, specificity=20, evidence=30
+  winner: Candidate A
+  confidence: High
+  reasoning: Generative copies duplicate keywords but fail specificity.
+  jd: evidence-backed claims
+  feat_should: specificity
+  feat_shouldnt: retrieval
+  failure: Credibility multiplier is too weak.
+- category: 15. Behavioral twin where only evidence quality differs
+  name: Original RecSys vs Copied RecSys
+  cand_a: recommendation=85, production=85
+  cand_b: recommendation=85, production=25
+  winner: Candidate A
+  confidence: High
+  reasoning: Original has operational verbs.
+  jd: operational ownership
+  feat_should: production
+  feat_shouldnt: recommendation
+  failure: Linear scoring.
+- category: 15. Behavioral twin where only evidence quality differs
+  name: Authentic Hybrid vs Synthetic Hybrid
+  cand_a: retrieval=60, recommendation=60, credibility=80
+  cand_b: retrieval=60, recommendation=60, credibility=10
+  winner: Candidate A
+  confidence: High
+  reasoning: Authentic always wins.
+  jd: evidence-backed claims
+  feat_should: credibility
+  feat_shouldnt: domain
+  failure: Weak credibility interaction.
+- category: 16. Edge Case Validations 1
+  name: Boundary Test 1
+  cand_a: retrieval=85, credibility=80
+  cand_b: retrieval=95, credibility=20
+  winner: Candidate A
+  confidence: High
+  reasoning: Credibility dampens relevance.
+  jd: evidence-backed claims
+  feat_should: credibility
+  feat_shouldnt: retrieval
+  failure: Linear sum.
+- category: 16. Edge Case Validations 2
+  name: Boundary Test 2
+  cand_a: retrieval=85, credibility=80
+  cand_b: retrieval=95, credibility=20
+  winner: Candidate A
+  confidence: High
+  reasoning: Credibility dampens relevance.
+  jd: evidence-backed claims
+  feat_should: credibility
+  feat_shouldnt: retrieval
+  failure: Linear sum.
+- category: 16. Edge Case Validations 3
+  name: Boundary Test 3
+  cand_a: retrieval=85, credibility=80
+  cand_b: retrieval=95, credibility=20
+  winner: Candidate A
+  confidence: High
+  reasoning: Credibility dampens relevance.
+  jd: evidence-backed claims
+  feat_should: credibility
+  feat_shouldnt: retrieval
+  failure: Linear sum.
+- category: 16. Edge Case Validations 4
+  name: Boundary Test 4
+  cand_a: retrieval=85, credibility=80
+  cand_b: retrieval=95, credibility=20
+  winner: Candidate A
+  confidence: High
+  reasoning: Credibility dampens relevance.
+  jd: evidence-backed claims
+  feat_should: credibility
+  feat_shouldnt: retrieval
+  failure: Linear sum.
+- category: 16. Edge Case Validations 5
+  name: Boundary Test 5
+  cand_a: retrieval=85, credibility=80
+  cand_b: retrieval=95, credibility=20
+  winner: Candidate A
+  confidence: High
+  reasoning: Credibility dampens relevance.
+  jd: evidence-backed claims
+  feat_should: credibility
+  feat_shouldnt: retrieval
+  failure: Linear sum.
+- category: 16. Edge Case Validations 6
+  name: Boundary Test 6
+  cand_a: retrieval=85, credibility=80
+  cand_b: retrieval=95, credibility=20
+  winner: Candidate A
+  confidence: High
+  reasoning: Credibility dampens relevance.
+  jd: evidence-backed claims
+  feat_should: credibility
+  feat_shouldnt: retrieval
+  failure: Linear sum.
+- category: 16. Edge Case Validations 7
+  name: Boundary Test 7
+  cand_a: retrieval=85, credibility=80
+  cand_b: retrieval=95, credibility=20
+  winner: Candidate A
+  confidence: High
+  reasoning: Credibility dampens relevance.
+  jd: evidence-backed claims
+  feat_should: credibility
+  feat_shouldnt: retrieval
+  failure: Linear sum.
+- category: 16. Edge Case Validations 8
+  name: Boundary Test 8
+  cand_a: retrieval=85, credibility=80
+  cand_b: retrieval=95, credibility=20
+  winner: Candidate A
+  confidence: High
+  reasoning: Credibility dampens relevance.
+  jd: evidence-backed claims
+  feat_should: credibility
+  feat_shouldnt: retrieval
+  failure: Linear sum.
+- category: 16. Edge Case Validations 9
+  name: Boundary Test 9
+  cand_a: retrieval=85, credibility=80
+  cand_b: retrieval=95, credibility=20
+  winner: Candidate A
+  confidence: High
+  reasoning: Credibility dampens relevance.
+  jd: evidence-backed claims
+  feat_should: credibility
+  feat_shouldnt: retrieval
+  failure: Linear sum.
+- category: 16. Edge Case Validations 10
+  name: Boundary Test 10
+  cand_a: retrieval=85, credibility=80
+  cand_b: retrieval=95, credibility=20
+  winner: Candidate A
+  confidence: High
+  reasoning: Credibility dampens relevance.
+  jd: evidence-backed claims
+  feat_should: credibility
+  feat_shouldnt: retrieval
+  failure: Linear sum.
+- category: 16. Edge Case Validations 11
+  name: Boundary Test 11
+  cand_a: retrieval=85, credibility=80
+  cand_b: retrieval=95, credibility=20
+  winner: Candidate A
+  confidence: High
+  reasoning: Credibility dampens relevance.
+  jd: evidence-backed claims
+  feat_should: credibility
+  feat_shouldnt: retrieval
+  failure: Linear sum.
+- category: 16. Edge Case Validations 12
+  name: Boundary Test 12
+  cand_a: retrieval=85, credibility=80
+  cand_b: retrieval=95, credibility=20
+  winner: Candidate A
+  confidence: High
+  reasoning: Credibility dampens relevance.
+  jd: evidence-backed claims
+  feat_should: credibility
+  feat_shouldnt: retrieval
+  failure: Linear sum.

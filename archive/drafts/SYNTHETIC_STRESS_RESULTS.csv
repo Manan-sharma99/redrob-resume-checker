@@ -1,0 +1,8 @@
+candidate_id,relevance_score,credibility_score,negative_signal_score,final_score,rank,profile_type
+SYN_001,0.6449999999999999,0.1525,0.0,0.39901312499999997,1,Elite Retrieval Engineer
+SYN_004,0.6,0.14900000000000002,0.0,0.37023,2,Keyword Stuffer
+SYN_002,0.6525,0.016,0.0,0.363573,3,Elite Recommendation Engineer
+SYN_006,0.27,0.0,0.0,0.14850000000000002,4,Research Scientist
+SYN_003,0.0,0.016,0.0,0.0,5,Generic LLM Engineer
+SYN_005,0.0,0.189,0.0,0.0,6,Infrastructure Engineer
+SYN_007,0.09,0.06,0.3,0.0,7,Consulting Architect
