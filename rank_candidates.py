@@ -283,14 +283,25 @@ def compute_final_score(
 # Pipeline runner
 # ===========================================================================
 
-def run_pipeline() -> None:
+def run_pipeline(
+    input_parquet: Path | None = None,
+    output_parquet: Path | None = None,
+    submission_csv: Path | None = None,
+    diagnostics_md: Path | None = None,
+) -> None:
+    # Resolve paths — fall back to module-level defaults when not supplied.
+    input_parquet = input_parquet or INPUT_PARQUET
+    output_parquet = output_parquet or OUTPUT_PARQUET
+    submission_csv = submission_csv or SUBMISSION_CSV
+    diagnostics_md = diagnostics_md or DIAGNOSTICS_MD
+
     print("=" * 65)
     print("RANKING PIPELINE — Senior AI Engineer (Search/Retrieval/Ranking)")
     print("=" * 65)
 
     # --- Load features ---
-    print(f"\n[1/7] Loading features from {INPUT_PARQUET} ...")
-    df = pd.read_parquet(INPUT_PARQUET)
+    print(f"\n[1/7] Loading features from {input_parquet} ...")
+    df = pd.read_parquet(input_parquet)
     total_candidates = len(df)
     print(f"      Loaded {total_candidates:,} candidates.")
 
@@ -370,8 +381,9 @@ def run_pipeline() -> None:
         "rank",
     ]
     ranked_output = kept[output_cols].copy()
-    ranked_output.to_parquet(OUTPUT_PARQUET, index=False)
-    print(f"      Wrote {OUTPUT_PARQUET} ({len(ranked_output):,} rows)")
+    output_parquet.parent.mkdir(parents=True, exist_ok=True)
+    ranked_output.to_parquet(output_parquet, index=False)
+    print(f"      Wrote {output_parquet} ({len(ranked_output):,} rows)")
 
     # --- Output: final_submission.csv ---
     top100 = kept[kept["rank"] <= 100].copy()
@@ -515,8 +527,9 @@ def run_pipeline() -> None:
     top100_submission = top100[["candidate_id", "rank", "final_score", "reasoning"]].rename(
         columns={"final_score": "score"}
     )
-    top100_submission.to_csv(SUBMISSION_CSV, index=False)
-    print(f"      Wrote {SUBMISSION_CSV} ({len(top100_submission)} candidates)")
+    submission_csv.parent.mkdir(parents=True, exist_ok=True)
+    top100_submission.to_csv(submission_csv, index=False)
+    print(f"      Wrote {submission_csv} ({len(top100_submission)} candidates)")
 
     # --- Console: Top 50 ---
     print("\n" + "=" * 65)
@@ -537,8 +550,8 @@ def run_pipeline() -> None:
     print(top50.to_string(index=False))
 
     # --- Diagnostics ---
-    _write_diagnostics(df, kept, rejected, top100)
-    print(f"\n      Wrote {DIAGNOSTICS_MD}")
+    _write_diagnostics(df, kept, rejected, top100, diagnostics_md)
+    print(f"\n      Wrote {diagnostics_md}")
     print("\nDone.")
 
 
@@ -555,6 +568,7 @@ def _write_diagnostics(
     kept: pd.DataFrame,
     rejected: pd.DataFrame,
     top100: pd.DataFrame,
+    diagnostics_path: Path = DIAGNOSTICS_MD,
 ) -> None:
     lines: list[str] = []
 
@@ -692,12 +706,33 @@ def _write_diagnostics(
     lines.append("final_score = (base_score - penalty).clip(0, 1)\n")
     lines.append("```\n")
 
-    DIAGNOSTICS_MD.write_text("\n".join(lines), encoding="utf-8")
+    diagnostics_path.parent.mkdir(parents=True, exist_ok=True)
+    diagnostics_path.write_text("\n".join(lines), encoding="utf-8")
 
 
 # ===========================================================================
 # Entry point
 # ===========================================================================
 
+def _parse_args():
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--input", type=Path, default=None,
+                        help="Path to candidate_features.parquet (default: outputs/candidate_features.parquet)")
+    parser.add_argument("--output", type=Path, default=None,
+                        help="Path for ranked_candidates.parquet (default: outputs/ranked_candidates.parquet)")
+    parser.add_argument("--submission", type=Path, default=None,
+                        help="Path for final_submission.csv (default: outputs/final_submission.csv)")
+    parser.add_argument("--diagnostics", type=Path, default=None,
+                        help="Path for ranking_diagnostics.md (default: outputs/ranking_diagnostics.md)")
+    return parser.parse_args()
+
+
 if __name__ == "__main__":
-    run_pipeline()
+    args = _parse_args()
+    run_pipeline(
+        input_parquet=args.input,
+        output_parquet=args.output,
+        submission_csv=args.submission,
+        diagnostics_md=args.diagnostics,
+    )

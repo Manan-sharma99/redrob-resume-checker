@@ -85,6 +85,34 @@ python validate_ranking_system.py
 - **Credibility Realization**: Features such as production scale markers (QPS, Millions of Users) and explicit specificity metrics establish credibility.
 - **Multiplicative Penalties**: We apply severe, non-linear dampening for title-chasers and short-tenure hopping, rather than simple additive deductions.
 
+## Streamlit Demo
+
+A lightweight Streamlit application (`app.py`) wraps the existing pipeline for interactive use.
+
+### Local Execution
+
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+The app opens in your browser. You can either:
+- **Use the bundled sample dataset** (`data/sample_candidates.json`), or
+- **Upload your own** JSON/JSONL file (≤100 candidates).
+
+Click **Run Ranking Pipeline** and the results appear as a sortable table with a CSV download button.
+
+### Streamlit Community Cloud Deployment
+
+1. Push this repository to GitHub (ensure `data/sample_candidates.json` is included).
+2. Go to [share.streamlit.io](https://share.streamlit.io) and connect your GitHub account.
+3. Select the repository and set:
+   - **Main file path:** `app.py`
+   - **Python version:** 3.11+
+4. Deploy. Dependencies are installed automatically from `requirements.txt`.
+
+> **Note:** The full `data/candidates.jsonl` (487 MB) is git-ignored and not required for the demo — the app uses `sample_candidates.json` by default.
+
 ## Limitations
 - The system evaluates resumes based on text extraction constraints; heavily obfuscated PDF-to-text anomalies may bypass some chronological validation.
 - Network calls and Large Language Models are intentionally disabled during inference to maintain strict latency limits and deterministic reproducibility.
