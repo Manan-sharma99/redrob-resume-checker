@@ -101,45 +101,41 @@ def _parse_candidates(uploaded_file) -> list[dict]:
             )
         return records
 
-    # --- Use bundled sample dataset ---
-    # Prefer the full JSONL (take first N lines) since sample_candidates.json
-    # may have formatting issues.  Fall back to sample JSON if JSONL absent.
-    full_jsonl = DATA_DIR / "candidates.jsonl"
-    if full_jsonl.is_file():
-        records = []
-        with open(full_jsonl, "r", encoding="utf-8") as f:
-            for line in f:
-                line = line.strip()
-                if not line:
-                    continue
-                records.append(json.loads(line))
-                if len(records) >= MAX_CANDIDATES:
-                    break
-    elif SAMPLE_DATA.is_file():
-        raw = SAMPLE_DATA.read_text(encoding="utf-8")
-        try:
-            records = json.loads(raw)
-            if not isinstance(records, list):
-                raise ValueError("sample_candidates.json is not a JSON array.")
-        except json.JSONDecodeError:
-            records = []
-            for line in raw.splitlines():
-                line = line.strip()
-                if not line:
-                    continue
-                try:
-                    records.append(json.loads(line))
-                except json.JSONDecodeError:
-                    continue
-        records = records[:MAX_CANDIDATES]
-    else:
+    # --- Use bundled sample dataset (data/sample_candidates.json) ---
+    if not SAMPLE_DATA.is_file():
         raise FileNotFoundError(
-            "No sample data found. Place candidates.jsonl or "
-            "sample_candidates.json in the data/ directory."
+            f"Sample dataset not found at {SAMPLE_DATA}. "
+            "Please place sample_candidates.json in the data/ directory."
         )
 
+    raw = SAMPLE_DATA.read_text(encoding="utf-8")
+
+    # Try JSON array first, fall back to JSONL.
+    try:
+        records = json.loads(raw)
+        if not isinstance(records, list):
+            raise ValueError(
+                "sample_candidates.json is not a JSON array of candidate records."
+            )
+    except json.JSONDecodeError:
+        # Attempt JSONL (one JSON object per line).
+        records = []
+        for line in raw.splitlines():
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                records.append(json.loads(line))
+            except json.JSONDecodeError:
+                continue
+
     if len(records) == 0:
-        raise ValueError("Sample dataset contains no valid candidate records.")
+        raise ValueError(
+            "sample_candidates.json contains no valid candidate records. "
+            "The file may be corrupted."
+        )
+
+    records = records[:MAX_CANDIDATES]
     return records
 
 

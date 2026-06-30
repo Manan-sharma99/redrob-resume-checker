@@ -8074,7 +8074,7 @@
     }
   },
   {
- "CAND_0000050",
+    "candidate_id": "CAND_0000050",
     "profile": {
       "anonymized_name": "Naina Bose",
       "headline": "Business Analyst | Helping teams scale",
@@ -8086,7 +8086,7 @@
       "current_company": "Infosys",
       "current_company_size": "10001+",
       "current_industry": "IT Services"
-    },    "candidate_id":
+    },
     "career_history": [
       {
         "company": "Infosys",
